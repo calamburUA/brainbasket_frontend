@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 26.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>display: flex</h1>
+		<section>
+			<p><strong>Flexbox</strong> <em>(flexible box, гнучкий блок)</em> - новий підхід до розмітки блоків, який вдало поєднує табличне і блочне форматування.</p>
+			<p>Flexbox - набір стилів, які необхідно задавати як батьківським елементам, так і дочірнім.</p>
+			<p>Основа флексів - напрямок потоку. Блочні елементи розташовуються вертикально, строчні елементи - горизонтально, а флекс-елементам можна задавати напрямок розташування, в тому числі і зворотній: справа наліво, знизу вгору.</p>
+			<div class="image">
+				<img src="images/flex1.png" alt="Flex">
+				<p>Напрямки потоків флекс-бокса.</p>
+			</div>
+		</section>
+		<section>
+			<h2>Батьківський елемент</h2>
+			<p>В першу чергу створимо батьківський елемент, обгортку:</p>
+			<code>
+				&lt;div class="wrap"><br>
+				&nbsp;&nbsp;...<br>
+				&lt;/div><br><br>
+				.wrap { display: flex; }<br>
+				// або<br>
+				.wrap { display: inline-flex; } // флекс-аналог inline-block
+			</code>
+			<p>Ні для обгортки, ні для його дітей першого порядку не можна використовувати флоати (елементи автоматично отримують стиль display: block).</p>
+			<p>Далі задаємо напрямок розміщення дочірніх блоків. Є 4 варіанти напрямку:</p>
+			<code>
+				.wrap { display: flex; flex-direction: row; }<br>
+				.wrap { display: flex; flex-direction: row-reverse; }<br>
+				.wrap { display: flex; flex-direction: column; }<br>
+				.wrap { display: flex; flex-direction: column-reverse; }
+			</code>
+			<p><strong>row</strong> - горизонтальний напрямок потоку;<br><strong>column</strong> - вертикальний;<br><strong>reverse</strong> - змінити напрямок розташування на протилежний.</p>
+			<p>При застосуванні вертикального напрямку решта стилів застосовується так, ніби блок повернений на 90 градусів проти часової стрілки, поверніть голову на бік :)</p>
+			<p>Можна вказати чи флекс-обгортка буде багатострочною, чи однострочною:</p>
+			<code>
+				.wrap { flex-wrap: nowrap; }<br>
+				.wrap { flex-wrap: wrap; }<br>
+				.wrap { flex-wrap: wrap-reverse; }
+			</code>
+			<p>Попередні два стиля можна об'єднати одним:</p>
+			<code>
+				.wrap { flex-flow: row nowrap; }<br>
+				.wrap { flex-flow: column-reverse wrap; }
+			</code>
+			<p>Розтягування контенту:</p>
+			<code>
+				.wrap { justify-content: flex-start; }<br>
+				.wrap { justify-content: flex-end; }<br>
+				.wrap { justify-content: center; }<br>
+				.wrap { justify-content: space-between; }<br>
+				.wrap { justify-content: space-around; }
+			</code>
+			<div class="image">
+				<img src="images/flex2.png" alt="Flex">
+				<p>Розтягування контенту.</p>
+			</div>
+			<p>Вирівнювання контенту по вертикалі:</p>
+			<code>
+				.wrap { align-items: flex-start; }<br>
+				.wrap { align-items: flex-end; }<br>
+				.wrap { align-items: center; }<br>
+				.wrap { align-items: baseline; }<br>
+				.wrap { align-items: stretch; }
+			</code>
+			<div class="image">
+				<img src="images/flex3.png" alt="Flex">
+				<p>Вирівнювання контенту по вертикалі.</p>
+			</div>
+			<p>Для багатострочного флекса є ще властивість, яка керує строками:</p>
+			<code>
+				.wrap { align-content: flex-start; }<br>
+				.wrap { align-content: flex-end; }<br>
+				.wrap { align-content: center; }<br>
+				.wrap { align-content: space-between; }<br>
+				.wrap { align-content: space-around; }<br>
+				.wrap { align-content: stretch; }
+			</code>
+			<div class="image">
+				<img src="images/flex4.png" alt="Flex">
+				<p>Вирівнювання строк у флексбоксі.</p>
+			</div>
+		</section>
+		<section>
+			<h2>Дочірні елементи</h2>
+			<p>Стиль, яким можна керувати порядком елементів:</p>
+			<code>
+				.wrap .item:nth-child(1) { order: 2; }<br>
+				.wrap .item:nth-child(2) { order: 3; }<br>
+				.wrap .item:nth-child(3) { order: 1; }<br>
+				.wrap .item:nth-child(4) { order: 4; }
+			</code>
+			<p>Стиль, яким можна створити "сітку" з дочірніх елементів. Значення стилю - ціле чи дробне число більше нуля. Якщо задано нуль - блоки розтягуються відповідно іншим стилям.</p>
+			<code>
+				.wrap .item { flex-grow: 2; }<br>
+				.wrap .item:nth-child(2) { flex-grow: 2.5; }<br>
+				.wrap .item.long { flex-grow: 4; }
+			</code>
+			<p><strong>flex-shrink</strong> - стиль, що дає можливість стискатися елементу, числове значення, по замовчуванню - 1.</p>
+			<p><strong>flex-basis</strong> - розмір елемента "по замовчуванню" до його розтягування відповідно стилів flex.</p>
+			<p><strong>flex</strong> - стиль, що об'єднує в собі flex-grow, flex-shrink та flex-basis:</p>
+			<code>
+				.wrap .item { flex: 2 1 auto; }
+			</code>
+			<p><strong>align-self</strong> - дозволяє змінити стиль align-items батьківського елемента для конкретного дочірнього елемента:</p>
+			<code>
+				.wrap .item.end { align-self: flex-end; }
+			</code>
+		</section>
+
+		<section>
+			<h2>Сітка</h2>
+			<p>Наразі розробляється ще одна цікава концепція розмітки - сітка.</p>
+			<code>
+				.wrap { display: grid; }
+			</code>
+			<p>Браузери ще <a href="http://caniuse.com/#search=display%3A%20grid" target="_blank">не підтримують</a> цей стиль, його можна протестувати у браузерах, додавши вендорні префікси (а також, можливо, доведеться включити у браузері підтримку тестових стилів).</p>
+			<p>Орієнтовно - в 2017 році сітка увійде в користувацькі версії браузерів, а у 2018-2019 роках позбудеться вендорних префіксів.</p>
+			<p>Фактично, цей стиль витіснить сітки, такі як Bootstrap, Skeleton та інші.</p>
+			<p>Display-сітка має значні переваги перед тими сітками, які використовуються зараз:<br>
+			- ви не обмежені заготовкою, кожен батьківський блок може мати свою власну сітку;<br>
+			- вам не треба робити заготовки на всі можливі колонки, кожний батьківський блок з сіткою описується стилями "під себе";<br>
+			- колонки можуть виражатися не цілими числами, наприклад: є 7-колоночний блок, а перша колонка в нього може бути 2,3 ширини (23%).</p>
+			<p>Сітки вам на самоопрацювання, <em>гугл: "css display grid"</em></p>
+		</section>
+		<br><br><br><br>
+
+	</div>
+</div>
+
+</body>
+</html>

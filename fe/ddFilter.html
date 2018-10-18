@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ddFilter</title>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+	<style>
+		p { position:relative; display:inline-block;}
+		.ddFilterList { display:none; position:absolute; left:0; top:100%; margin-top:-1px; box-sizing:border-box; width:100%; max-height:150px; overflow-x:hidden; overflow-y:auto; border:1px solid #999; background:#fff;}
+		.ddFilterList.show { display:block;}
+		ul { margin:0; padding:0; list-style:none;}
+		li { display:none; padding:4px 8px; cursor:pointer;}
+		li.show { display:block;}
+		li.active { background:silver;}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		var ddTowns = [
+			'Adfs','Adgdfdf','Advfgfgf','Abdfsdg','Annddfdf','Abdfg','Alkjlkgj','Blkjlj','Bfdfl','Bkjljkf','Bsfgop','Blkjhh',
+			'Ckdjhfhkd','Ckdjhfkss','Cgkjhsk','Cdfdflkk','Clfkjlks','Clkdjlkjld','Ckjgfk','Cskjg','Cdlgklf','Csjgffd','Cdljg'];
+		var ddZip = ['35126','35127','35128','36145','36146','42115','43127','43148','43169','45024','46785','46794'];
+
+		function dropDownFilter(){
+			$('[data-toggle="ddFilter"]').each(function(){
+				var $input = $(this), arr = eval($input.attr('data-list')), $label = $input.parents('label').eq(0), li = '';
+				for (var i=0; i<arr.length; i++) {
+					li = li + '<li>' + arr[i] + '</li>';
+				}
+				$label.after('<div class="ddFilterList"><ul>'+li+'</ul></div>');
+				var $ul = $label.parent().find('.ddFilterList > ul').eq(0), $list = $ul.children();
+				$input.on('keyup', function(e){
+					var kc = e.keyCode, val = $input.val();
+					//console.log('key = ' + e.key + '; keycode = ' + kc + '; val = ' + val);
+					if (val.length == 0) {
+						$ul.parent().removeClass('show');
+					} else {
+						$list.each(function(){
+							$(this).removeClass('show');
+							if ((kc != 13) && (kc != 38) && (kc != 40)) { $(this).removeClass('active'); }
+							var a = $(this).text().toLowerCase(), b = val.toLowerCase();
+							if (a.indexOf(b) == 0) { $(this).addClass('show');}
+						});
+						var $actItem = $ul.children('.active'), $visItems = $ul.children('.show'), $next;
+						$ul.parent().addClass('show');
+						if ($visItems.length) {
+							if (kc == 13) {
+								if ($actItem.length) {
+									//console.log('>>>>>' +$actItem.eq(0).text());
+									$input.val($actItem.eq(0).text());
+									$ul.parent().removeClass('show');
+									return false;
+								}
+							} else if ((kc == 38) || (kc == 40)) {
+								if ($actItem.length) {
+									$next = (kc == 40) ? $actItem.next('.show') : $actItem.prev('.show');
+									if ($next.length) {
+										$actItem.removeClass('active');
+										$next.addClass('active');
+									}
+								} else {
+									$next = (kc == 40) ? 0 : $visItems.length-1;
+									$visItems.eq($next).addClass('active');
+								}
+							}
+						}
+					}
+				}).on('focus', function(){
+					if (document.body.clientWidth < 1000) {
+						$('html, body').stop().animate({scrollTop: $input.offset().top-20}, '500', 'swing');
+					}
+				});
+				$list.on('click', function(){
+					$input.val($(this).text());
+					$ul.parent().removeClass('show');
+				});
+			});
+		}
+
+		$(function () {
+			dropDownFilter();
+		});
+	</script>
+</head>
+<body>
+
+<br><br><br><br><br><br><br>скролль ниже<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<p><label><input type="text" data-toggle="ddFilter" data-list="ddTowns"></label></p>
+
+<br><br> еще ниже - ZIP <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<p><label><input type="text" data-toggle="ddFilter" data-list="ddZip"></label></p>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

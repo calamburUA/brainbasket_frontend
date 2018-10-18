@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 4</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.this_result {padding:20px; background: #eeffee;}
+		.this_result p { padding: 0;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		a&lt;b&gt;c
+
+		<h1>Заняття 4.</h1>
+
+		<section>
+			<h2>4.1. !DOCTYPE.</h2>
+			<p>Кожен html-файл повинен починатися зі строки-сігнатури &lt;!DOCTYPE ... &gt;</p>
+			<p>Цей елемент призначений для того, щоб браузер розумів як інтерпретувати веб-сторінку.</p>
+			<p>Зараз ми завжди будемо використовувати простеньку строку: <strong>&lt;!DOCTYPE html&gt;</strong>, вона означає, що наша сторінка написана згідно стандарту HTML5.</p>
+			<p>Раніше ця сігнатура мала значно монструозніший вигляд, описувала строгий, перехідний синтаксиси HTML, використання фреймів, і виглядала приблизно так:<br>
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</p>
+			<p>Детальніше з цим елементом можна ознайомитися в вікіпедії чи на проекті htmlbook.ru (webref.ru).</p>
+		</section>
+
+		<section>
+			<h2>4.2. HEAD.</h2>
+			<p>Між тегами &lt;html&gt; та &lt;body&gt; повинен знаходитися ще один блок: <strong>&lt;head&gt;</strong></p>
+			<p>Цей блок не відображається на сторінці і містить певні установки для налаштування браузера.</p>
+			<p>Ось приклад блока <strong>&lt;head&gt;</strong>:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;title&gt;Frontend. Заняття 4&lt;/title&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				&nbsp;&nbsp;&lt;meta name="keywords" content=""&gt;<br>
+				&nbsp;&nbsp;&lt;meta name="description" content=""&gt;<br>
+				&nbsp;&nbsp;&lt;meta name="format-detection" content="telephone=no"&gt;<br>
+				&nbsp;&nbsp;&lt;link type="text/css" rel="stylesheet" href="css/styles.css"&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript" src="js/scripts.js"&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;div ...&gt;<br>
+			</code>
+			<p>Перший тег <strong>&lt;title&gt;</strong> містить в собі строку - заголовок сторінки. Цю строку можна побачити на вкладці браузера</p>
+			<div class="image">
+				<img src="images/part4_2.jpg" alt="Tag title">
+				<p>Зображення 4.2.1. Текст з тега &lt;title&gt; відображається у закладці браузера.</p>
+			</div>
+			<p>Далі йдуть так звані мета-теги. Вони описують мета-дані сторінки та підлаштовують браузер для її відображення:<br>
+				- ключові слова інформації, що представлена на сторінці;<br>
+				- опис інформації, що представлена на сторінці;<br>
+				- format-detection - це параметр, від значення якого залежить як будуть представлені різні формати даних.</p>
+			<p>В нашому випадку значення "telephone=no" означає те, що браузери мобільних додатків не будуть намагатися представити телефон у вигляді посилання. Клік на таке посилання дає змогу одразу зателефонувати за вказаним номером, але небажане посилання може попортити зовнішній вигляд сторінки.</p>
+			<p>Тег <strong>&lt;link&gt;</strong> призначений для підключення ресурсів, в даному випадку - файл стилів.</p>
+			<p>Тег <strong>&lt;script&gt;</strong> призначений для підключення скриптів чи їх безпосереднє включення в код сторінки.</p>
+		</section>
+
+		<section>
+			<h2>4.3. Спецсимволи.</h2>
+			<p>В проекті теплохода КолесовЪ нам зустрічалися такі символи, як знак копірайта і кавички у вигляді ялинок:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;<strong>&copy;</strong> Банкетный теплоход КолесовЪ<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;<strong>&laquo;</strong>Колесовъ<strong>&raquo;</strong></p>
+			<p>Як правило - подібні символи записуються їхніми html-кодами, для того, щоб вони не похєрилися при конвертації кодувань, чи для того, щоб дати зрозуміти браузеру, що знаки &lt; та &gt; - це знаки менше/більше, а не якийсь тег.</p>
+			<code>
+				&copy; - &amp;copy;<br>
+				&lt; - &amp;lt;<br>
+				&gt; - &amp;gt;<br>
+				&laquo; - &amp;laquo;<br>
+				&raquo; - &amp;raquo;<br>
+				&amp; - &amp;amp;<br>
+				&amp;nbsp; - символ нерозривного пробілу, а також ми будемо ним користуватися як "примусовим пробілом".
+			</code>
+			<p>Після кожного коду обов'язково ставимо крапку з комою.</p>
+			<p>Весь перелік кодів символів легко знайти в гуглі: "html код символа".</p>
+			<p>Коди символів можуть мати вигляд <strong>&amp;#6527;</strong> - це номер символа в Unicode-таблиці.</p>
+			<p>&nbsp;</p>
+			<p>Звичайний пробіл в деяких місцях може ігноруватися і пустий блок схлопнеться (не буде відображений).</p>
+			<p>Нерозривні пробіли можна використовувати для того, щоб такі блоки не схлопувалися:</p>
+			<code>
+				&lt;p&gt;Строка 1&lt;p&gt;<br>
+				&lt;p&gt;&lt;/p&gt;<br>
+				&lt;p&gt;Строка 2&lt;/p&gt;<br>
+				&lt;p&gt;     &lt;/p&gt;<br>
+				&lt;p&gt;Строка 3&lt;/p&gt;<br>
+				&lt;p&gt;&amp;nbsp;&lt;/p&gt;<br>
+				&lt;p&gt;Строка 4&lt;/p&gt;
+			</code>
+			<p>Результат (для &lt;p&gt; задані нульові відступи - margin:0; padding:0;):</p>
+			<div class="this_result">
+				<p>Строка 1</p>
+				<p></p>
+				<p>Строка 2</p>
+				<p> </p>
+				<p>Строка 3</p>
+				<p>&nbsp;
+				<p>Строка 4</p>
+			</div>
+
+		</section>
+
+		<section>
+			<h2>4.4. CSS.</h2>
+			<p><strong>CSS</strong> - система каскадних стилів.</p>
+			<p>Стилі використовуються для візуального представлення даних.</p>
+			<p>Стилі називаються каскадними тому що браузер буде слідувати по них як по каскаду, застосовуючи все нові і нові правила, перекриваючи старі. Це щось схоже на закони, коли нові поправки до законів перекривають старі, ті втрачають чинність.</p>
+			<p>В стилях ми матимемо змогу описати колір шрифтів та елементів, їх розмір, фон, відступи, положення одного відносно інших, їх поведінку на події миші.</p>
+			<p>Для зручності використання стилів існують класи. Клас описується стилями, має певний набір властивостей. Коли цей клас застосувати до якогось тега - то цей тег отримає всі властивості, всі стилі класа.</p>
+			<p>В стилях можна описати безпосередньо самі теги, не застосовуючи класи.</p>
+		</section>
+
+		<section>
+			<h2>4.5. Методи включення стилів в HTML.</h2>
+			<p>Існує три основних метода включення стилів в HTML.</p>
+			<p>Безпосереднє включення стиля в тег:</p>
+			<code>
+				&lt;p <strong>style="color: red"</strong>&gt;Цей текст буде червоного кольору.&lt;/p&gt;
+			</code>
+			<p>Включення стилів у <strong>&lt;head&gt;</strong> сторінки, при цьому стилі охоплюються фігурними скобками { }, а тег чи клас записуються безпосередньо перед ними:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;title&gt;Frontend. Заняття 4&lt;/title&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				<strong>&nbsp;&nbsp;&lt;style&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;p { color: red;}<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;.blue_text { color: blue;}<br>
+				&nbsp;&nbsp;&lt;/style&gt;</strong><br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Цей текст буде червоним. Всі параграфи на сторінці по замовчуванню будуть червоними.&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p <strong>class="blue_text"</strong>&gt;Але цей текст буде синім. Класс в системі каскадів перекриє червоний колір на синій.&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p <strong>style="color: green"</strong>&gt;А цей текст буде взагалі зеленим, тому що так прописано безпосередньо в тегу і попередні стилі будуть проігноровані.&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Це - звичайний параграф, і текст у ньому буде червоного кольору.&lt;/p&gt;<br>
+			</code>
+			<p>Виглядатиме це так:</p>
+			<div class="code">
+				<p style="color: red">Цей текст буде червоним. Всі параграфи на сторінці по замовчуванню будуть червоними.</p>
+				<p style="color: blue">Але цей текст буде синім. Клас в системі каскадів перекриє червоний колір на синій.</p>
+				<p style="color: green">А цей текст буде взагалі зеленим, тому що так прописано безпосередньо в тегу і попередні стилі будуть проігноровані.</p>
+				<p style="color: red">Це - звичайний параграф, і текст у ньому буде червоного кольору.</p>
+			</div>
+			<p>Третій спосіб - винесення стилів в окремі файли і підключення їх в блоці <strong>&lt;head&gt;</strong>:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;title&gt;Frontend. Заняття 4&lt;/title&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				<strong>&nbsp;&nbsp;&lt;link type="text/css" rel="stylesheet" href="css/styles.css"&gt;</strong><br>
+				&lt;/head&gt;<br>
+			</code>
+			<p>Стилі пишуться так:<br><strong>назва_стилю: опис стилю</strong>;<br>color: red;</p>
+			<p>Стилі розділяються між собою крапкою з комою:</p>
+			<code>
+				div { color: yellow; width: 100px; height: 50px;}
+			</code>
+			<code>
+				div {<br>
+				&nbsp;&nbsp;color: yellow;<br>
+				&nbsp;&nbsp;width: 100px;<br>
+				&nbsp;&nbsp;height: 50px;<br>
+				}
+			</code>
+			<p>Поки що ми будемо користуватися виключно третім способом, всі стилі прописувати в окремому файлі.</p>
+			<p>&nbsp;</p>
+			<p>В іменах класів допускається використовувати такі символи:</p>
+			<p><strong>a..z 0..9 _ -</strong> (символ підкреслення і дифіс/мінус)</p>
+			<p>Ім’я класу не повинно починатися з цифри чи дифіса/мінуса.</p>
+			<p>Не допускається використовувати пробіли. Пробіли опускають або замість них використовують підкреслення, дифіс/мінус чи велику літеру. В решті випадків використання великих літер не рекомендується.</p>
+			<code>
+				.bigbluebutton { ... }<br>
+				.big_blue_button { ... }<br>
+				.big-blue-button { ... }<br>
+				.bigBlueButton { ... }
+			</code>
+			<p>Імена ідентифікаторів будуються за тими самими принципами, окрім того, що знак дифіса/мінуса використовувати не бажано.</p>
+		</section>
+
+		<section>
+			<h2>4.6. Стилі шрифта і блока.</h2>
+			<h3>Стилі шрифта:</h3>
+			<code>
+				<strong>color:</strong> #fff;<br>
+				<strong>text-align:</strong> center;<br>
+				<strong>font-family:</strong> "Times New Romain", Helvetica, serif;<br>
+				<strong>font-weight:</strong> bold;<br>
+				<strong>font-style:</strong> italic;<br>
+				<strong>font-size:</strong> 16px;<br>
+				<strong>line-height:</strong> 1.4em;<br>
+				<em><strong>font:</strong> normal 16px/1.4em "Times New Romain", Helvetica, serif;</em>
+			</code>
+
+			<h3>Розміри елемента:</h3>
+			<code>
+				<strong>width:</strong> 100%;<br>
+				<strong>height:</strong> 75px;
+			</code>
+			<p>Старайтеся не використовувати стиль <strong>height</strong>:</p>
+			<p class="noheight">height: 40px;</p>
+
+			<h3>Відступи:</h3>
+			<code>
+				<strong>margin:</strong> 0 8px 10px 20%;<br>
+				<strong>padding:</strong> 10px 8px;<br>
+				1, 2, 3, 4 параметра<br>
+				width, height не включають padding<br>
+				використовуйте padding в першу чергу<br>
+				<strong>margin: 0 auto;</strong>
+			</code>
+
+			<h3>Фон:</h3>
+			<code>
+				<strong>background:</strong> #f00;<br>
+				<strong>background-color:</strong> #f00;<br>
+				<strong>background-image:</strong> url(../images/background.png);<br>
+				<strong>background-repeat:</strong> repeat;<br>
+				<strong>background-position:</strong> left top;<br>
+				<em><strong>background:</strong> #f00 url(../images/background.png) repeat left top;</em>
+			</code>
+
+			<h3>Вирівнювання:</h3>
+			<code>
+				<strong>float: left;</strong> - приклеїти блок до лівого краю;<br>
+				float: right; - приклеїти блок до правого краю;<br>
+				float: none; - відмінити приклеювання;<br>
+				<strong>clear: both;</strong> - очистка флоатів.
+			</code>
+			<div class="clear_example clr">
+				<div>float: left;</div>
+				<div>float: right;</div>
+			</div>
+			
+			<h3>Списки:</h3>
+			<code>
+				&lt;ul&gt;<br>
+				&nbsp;&nbsp;&lt;li&gr;List item 1&lt;/li&gr;<br>
+				&nbsp;&nbsp;&lt;li&gr;List item 2&lt;/li&gr;<br>
+				&nbsp;&nbsp;&lt;li&gr;List item 3&lt;/li&gr;<br>
+				&lt;/ul&gt;
+			</code>
+			<p>Звичайний список:</p>
+			<ul class="defUl">
+				<li>List Item 1</li>
+				<li>List Item 2</li>
+				<li>List Item 3</li>
+			</ul>
+			<p>&nbsp;</p>
+			<code>			
+				<strong>ul, li { margin: 0; padding: 0; list-style: none;}</strong> - прибрати кружечки;<br>
+				&lt;ul&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;List item 1&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;List item 2&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;List item 3&lt;/li&gt;<br>
+				&lt;/ul&gt;
+			</code>
+			<p>Список з обнуленням стилів:</p>
+			<ul>
+				<li>List Item 1</li>
+				<li>List Item 2</li>
+				<li>List Item 3</li>
+			</ul>
+			
+		</section>
+
+		<section>
+			<h2>4.7. Формат кольору, одиниці вимірювання.</h2>
+			<code>
+				<strong>кольори:</strong> текстове значення, #, rgb, rgba<br>
+				<strong>одиниці вимірювання:</strong>	px, pt (1/72 дюйма), mm, cm, m, inch, ft<br>
+				<strong>відносні одиниці:</strong> %, em, vw, vh<br>
+				<strong>кутові градуси, радіани:</strong> deg, rad
+			</code>
+		</section>
+
+		<section>
+			<h2>Домашнє завдання:</h2>
+			<p>1. Позадавайте стилі шрифта, фона для свого першого проекта.</p>
+			<p>2. Стилізувати проект "Колесов".</p>
+			<p>3. Зробити порізку, модель даних (index.txt) і HTML-код <a href="files/proj3_plodove.zip">проекта #3 - Плодове</a>.</p>
+			<p><strong>Додаткове завдання:</strong></p>
+			<p>А. Зверстати сторінку інтернет-магазина по продажу футболок.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

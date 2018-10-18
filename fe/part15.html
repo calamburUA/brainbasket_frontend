@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 15.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 15. Введення в JS.</h1>
+
+		<p><strong><a href="http://javascript.ru/">http://javascript.ru</a></strong></p>
+
+		<section>
+			<h2>15.1. Включення JS у веб-сторінку.</h2>
+			<p>Код JS може включатися безпосередньо у веб-сторінку в розділ &lt;head&gt; чи в тіло документа:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;var blahblah = 34;<br>
+				&nbsp;&nbsp;&lt;/script&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;document.write('&lt;p&gt;Hello!&lt;/p&gt;');<br>
+				&nbsp;&nbsp;&lt;/script&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Також JS може підключатися з файла, знову ж таки в розділі &lt;head&gt; чи в тілі документа:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript" src="<strong>js/my.js?update_05_01_2016_1</strong>"&gt;&lt;/script&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript" src="js/jQuery.min.js">&lt;/script&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Часто скрипти підключають в кінці веб-сторінки для того, щоб вони починалися грузитися в самому кінці.</p>
+		</section>
+
+		<section>
+			<h2>15.2. Змінні та їх видимість.</h2>
+			<p><strong>var</strong> x; - об’явлення (створення) змінної; від слова variable.</p>
+			<p>var y = 6; - об’явлення змінної та її ініціалізація - присвоєння їй певного значення.</p>
+			<p>y = 7; - присвоювання нового значення змінній.</p>
+			<p>Повертати значення - видати результат, стосується операторів, функцій.</p>
+			<p>Типи даних:</p>
+			<p><strong>int</strong> - цілі числа зі знаком.</p>
+			<p><strong>float</strong> - дробні числа.</p>
+			<p><strong>char</strong> - символи (1 байт).</p>
+			<p><strong>string</strong> - строкові константи.</p>
+			<p><strong>true, false</strong> - булеві значення.</p>
+			<p><strong>null, undefined, Infinity, NaN</strong> - спеціальні типи даних.</p>
+			<p><strong>array</strong> - масив даних.</p>
+			<p><strong>object</strong> - масив визначень або об’єкт.</p>
+			<p>var PORT = '8080'; - константа.</p>
+			<code>
+				var arr = new Array();<br>
+				var arr = [];<br><br>
+				var arr = [ elem0, elem1, elem2, ... ];<br>
+				var arr = new Array( elem0, elem1, elem2, ...);<br><br>
+				var arr = new Array(10);<br>
+				alert(arr[5]);<br><br>
+				var obj = new Object( [value] );<br><br>
+				var obj = {<br>
+				&nbsp;&nbsp;key1: val1,<br>
+				&nbsp;&nbsp;key2: val2,<br>
+				};<br><br>
+				var post = { formId: 2, mail: "vasya.pupkin@gmail.com", phone: "555-206-12-11", message: "Hello!"};<br>
+				alert(post.message);
+			</code>
+			<p>typeof - повертає тип змінної.</p>
+			<code>
+				/* оператор */<br>
+				var s;
+				s = typeof undefined; // "undefined"<br>
+				s = typeof 0; // "number"<br>
+				s = typeof true; // "boolean"<br>
+				s = typeof "foo"; // "string"<br>
+				s = typeof {}; // "object"<br>
+				s = typeof function(){}; // "function"<br><br>
+				/* функція */
+				s = typeof(0); // "number"<br>
+				s = typeof(true); // "boolean"<br>
+				s = typeof("foo"); // "string"
+			</code>
+		</section>
+
+		<section>
+			<h2>15.3. Основні конструкції.</h2>
+			<p><strong>Коментарі:</strong></p>
+			<code>
+				/* Коментар на дві строки:<br>
+				document.write("hello!"); */<br>
+				var i=6; // коментар до кінця строки
+			</code>
+			<p><strong>Оператори:</strong></p>
+			<p>r = a + b; - додавання.</p>
+			<p>r = a - b; - віднімання.</p>
+			<p>r = a * b; - множення.</p>
+			<p>r = a / b; - ділення (звичайне, дробове).</p>
+			<p>r = a % b; - модуль числа, повертає залишок від ділення.</p>
+			<p>i++, ++i - інкремент лічильника.</p>
+			<p>i--, --i - декремент лічильника.</p>
+			<p><strong>Умови:</strong></p>
+			<p>== - рівність;</p>
+			<p>=== - строга рівність;</p>
+			<p>!= - не рівність;</p>
+			<p>&lt;, &gt;, &lt;=, &gt;= - порівняння;</p>
+			<p>|| - або;</p>
+			<p>&& - та;</p>
+			<p>! - заперечення.</p>
+			<code>
+				if (a==1) {<br>
+				&nbsp;&nbsp;document.write('Ha-ha-ha!');<br>
+				}<br><br>
+				if (a==1) {<br>
+				&nbsp;&nbsp;document.write('Ha-ha-ha!');<br>
+				} else {<br>
+				&nbsp;&nbsp;document.write('Ho-ho-ho!');<br>
+				}<br><br>
+				if (a=1) { ... }<br><br>
+				var s = age >= 18 ? "adult" : "child";
+			</code>
+			<p>Приорітетність: заперечення, порівняння, та, або.</p>
+			<p>Умови можна комбінувати, використовувати скобки:</p>
+			<code>
+				if (a>b && c<6 || m=="none") { ... }<br>
+				if (a>!b && (c<6 || m=="none")) { ... }
+			</code>
+			<p>Умова магістра Йоди:</p>
+			<code>
+				if (1==a) { ... }<br><br>
+				if (1=a) { ... } /* error */
+			</code>
+			<p>Case:</p>
+			<code>
+				if (a==1) { ...<br>
+				} else if (a==2) { ...<br>
+				} else if (a==3) { ...<br>
+				}<br><br>
+				switch(x) {<br>
+				&nbsp;&nbsp;case 1:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;case "ok":<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;default:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				}
+			</code>
+			<p><strong>Цикли:</strong></p>
+			<code>
+				for (var i=0; i<9; i++) {<br>
+				&nbsp;&nbsp;n += i;<br>
+				&nbsp;&nbsp;console.log(n);<br>
+				}<br><br>
+				var j = 0;<br>
+				for (; j<3; j++) {<br>
+					alert(j);<br>
+				}<br><br>
+				var m = 1;<br>
+				while (m<6) { ... m++;}<br><br>
+				do {<br>
+					...<br>
+				} while (условие);
+			</code>
+			<p>Безкінечні цикли:</p>
+			<code>
+				for (;;) {<br>
+					...<br>
+					if (m=="ok") { continue; }<br>
+					...<br>
+					if (c) { break; }<br>
+				}<br><br>
+				while (true) { ... }
+			</code>
+			<p><strong>Функції:</strong></p>
+			<code>
+				var multiply = new Function("x", "y", "return x * y");<br>
+				var multiply = new Function("x,y", "return x * y");<br>
+				var a = multiply(7, 6);<br>
+				alert(a);<br><br>
+				function multiply(x, y) {<br>
+					return x * y;<br>
+				}<br>
+				alert(multiply(5, 6));<br>
+				var f = multiply;<br>
+				var obj = { mm: "bobobo", f: f}<br>
+				console.log(obj.f(6,7));
+			</code>
+			<p>Параметри функції, що задаються у скобках, передаються по значенню, тобто, копіюються всередину функції. Змінні, що ініціалізовані глобально, доступні всередині функцій.</p>
+			<code>
+				var a = 5;<br>
+				function testFunction(a){<br>
+				&nbsp;&nbsp;a = a + 20;<br>
+				&nbsp;&nbsp;var b = 10;<br>
+				&nbsp;&nbsp;console.log("a = " + a);<br>
+				&nbsp;&nbsp;console.log("b = " + b);<br>
+				&nbsp;&nbsp;console.log("global a = " + window.a);<br>
+				}<br><br>
+				testFunction(a);
+				console.log("Final a = " + a);
+				testFunction(a);
+				console.log("Final b = " + b);
+				testFunction(a);
+				testFunction(a);
+			</code>
+			<p>В багатьох випадках доводиться створювати функції з динамічною кількістю параметрів. Розглянемо функцію, що розбиває строку і повертає масив підстрок:</p>
+			<code>
+				<strong>s.split([separator][, limit]);</strong><br><br>
+				var str = "Apple Orange Kiwi Banana Cherry";<br>
+				var ar1 = str.split(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ["Apple Orange Kiwi Banana Cherry"]<br>
+				var ar2 = str.split(' '); &nbsp;&nbsp; // ["Apple", "Orange", "Kiwi", "Banana", "Cherry"]<br>
+				var ar3 = str.split(' ', 3); // ["Apple", "Orange", "Kiwi"]
+			</code>
+			<p>Створимо функцію, що повертає результат виразу (a + b) * c, в якій тільки один обов’язковий параметр, два інших - не обов’язкові:</p>
+			<code>
+				<strong>formula(a[, b][, c]);</strong><br>
+				var k = formula(2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 2<br>
+				var k = formula(2,3);&nbsp;&nbsp;&nbsp;&nbsp;// 5<br>
+				var k = formula(2,3,6);&nbsp;&nbsp;// 30<br><br>
+				===========================<br><br>
+				function formula(a, b, c){<br>
+				&nbsp;&nbsp;return (a + b) * c;<br>
+				}<br><br>
+				===========================<br><br>
+				function formula(a, b, c){<br>
+				&nbsp;&nbsp;if (b === undefined) { b = 0;	}<br>
+				&nbsp;&nbsp;if (c === undefined) { c = 1;	}<br>
+				&nbsp;&nbsp;return (a + b) * c;<br>
+				}<br><br>
+				===========================<br><br>
+				function formula(a, b, c){<br>
+				&nbsp;&nbsp;b == b || 0;<br>
+				&nbsp;&nbsp;c == c || 1;<br>
+				&nbsp;&nbsp;return (a + b) * c;<br>
+				}
+			</code>
+			<p>Розглянемо функцію setTimeout:</p>
+			<code>
+				function formula(a,b,c){ console.log(a+b+c); }<br>
+				setTimeout(formula, 5000, a, b, c);
+			</code>
+			<p>Параметри функції передаються після затримки (5000 мс), при чому наперед невідомо скільки буде параметрів, 1, 2, 20...</p>
+			<p>Не раціонально цю функцію реалізовувати вищевказаним способом. Натомість всередині функції доступний спеціальний об’єкт arguments, який містить в собі всі аргументи:</p>
+			<code>
+				function f(){<br>
+				&nbsp;&nbsp;console.log(arguments);<br>
+				&nbsp;&nbsp;console.log(arguments.length);<br>
+				&nbsp;&nbsp;console.log(arguments[1]);<br>
+				}<br><br>
+				f(10, "hello", { wgh: "5 kg" });<br><br>
+				======= результат: =====<br><br>
+				{ 0: 10, 1: "hello", 2: { wgh: "5 kg" } ... }<br>
+				3<br>
+				hello
+			</code>
+		</section>
+
+		<!--<script type="text/javascript">
+			var i=10;
+			i++;
+			var o = { mail: "nasdfgfg@gmail.com", form: 10, message: "hello!", ob: {momo: "toto", z: 6}}
+			alert(o);
+			console.log(o);
+		</script>
+		-->
+		<!--<script>
+			var a = 5;
+			function f(a){
+				a = a + 20;
+				var b = 10;
+				console.log("a = " + a);
+				console.log("b = " + b);
+				console.log("global a = " + window.a);
+			}
+			f(a);
+			console.log("Final a = " + a);
+			//console.log("Final b = " + b);
+		</script>-->
+
+		<section>
+			<h2>15.4. Робота з датою, часом.</h2>
+			<p>Для роботи з датою та часом у JS є об’єкт Date. Його можна створити таким чином:</p>
+			<code>
+				<strong>var date = new Date();</strong> - створюємо дату з поточними значеннями дня та часу.<br>
+				<strong>var date = new Date(dateVal);</strong> - створюємо дату з заданним значенням у мілісекундах з 1 січня 1970 року.<br>
+				<strong>var date = new Date(year, month, date[, hours, minutes, seconds, ms] );</strong> - більш зручний варіант задати час.<br>
+				<strong>var date = new Date("21 May 1958 10:12");</strong> - задаємо дату строкою.<br>
+				<strong>date = Date.now();</strong> - занести у об’єкт дати поточний день та час.<br>
+				<strong>date = date + (1000 * 60 * 60 * 24);</strong> - добавити до дати 1 день.
+			</code>
+			<p>Об’єкт Date має багато методів для обробки даних, які він містить. Весь список методів можна подивитися тут: <a href="http://javascript.ru/Date">http://javascript.ru/Date</a>.</p>
+			<p>Основні методи:</p>
+			<code>
+				<strong>date = Date.parse("10-24-2015, 06:34");</strong> - розібрати строку і перетворити її на дату в комп’ютерному форматі.<br>
+				<strong>var day = date.getDay();</strong> - повертає день тижня, 0 - неділя, 1- понеділок, 6 - субота.<br>
+				<strong>getDate, getMonth, getFullYear</strong> - повертає значення номер дня місяця, номер місяця (0..11), рік у повному форматі.<br>
+				<strong>getHours, getMinutes, getSeconds, getMilliseconds</strong> - повертає значення годин, хвилин і т.п.<br>
+				<strong>setDate, setMonth, setMinutes set...</strong> - задаємо в об’єкт конкретні складові часу.<br>
+				<strong>var d = new Date();</strong><br>
+				<strong>d.setHours(d.getHours() + 2);</strong> - задати дату та число на 2 години більше, ніж час на даний момент.<br>
+				<strong>d.toString();</strong> - повертає дату та час у строковому вигляді.
+			</code>
+			<p>Окрім об’єкта Date в JS є ще пару функцій-таймерів для роботи з циклічними подіями, створення онлайн-годинників, анімації.</p>
+			<p>Перший аргумент функцій - код чи функція, які потрібно виконати, другим аргументом у цих функціях задається час затримки перед виконанням у мілісекундах. Функції повертають ідентифікатор таймера.</p>
+			<code>
+				var timer1 = setTimeout('код, який потрібно виконати;', час в мілісекундах);<br>
+				var timer2 = setTimeout(функція, час в мілісекундах);<br>
+				var timer3 = setTimeout('alert("Hello!")', 5000);<br>
+				var timer4 = setTimeout(function(){ ... }, 5000);<br>
+				var timer5 = setTimeout(myFun, 5000);<br>
+				var i = 0;<br>
+				var sec = setInterval('console.log(i++);', 1000);<br>
+				var intr = setInterval(myRun, 5000, 5, 10);<br>
+				clearInterval(intr);<br>
+				function myFun() { ... };<br>
+				function myRun(a, b) { alert(a+b); };
+			</code>
+		</section>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+
+		<section>
+			<h2>Завдання.</h2>
+			<p>0. Створіть новий проект, в ньому - index.html, папку js і в ній - scripts.js. Підключіть файл скрипта в html.</p>
+			<p>1. В body пропишіть теги скрипта. Створіть пустий об’єкт і виведіть його в консоль.<br>Виведіть в консоль об’єкти window, document, document.body.<br>Після скрипта створіть елемент div#testbox, знайдіть його скриптом за допомогою метода document.getElementById(...), збережіть у змінну і виведіть цю змінну у консоль.</p>
+			<p>2. При відкритті сторінки вивести на екран повідомлення "Hello!". Скрипт писати в окремому файлі.<br>Створити форму з полем вводу і кнопкою input[type="button"]. При завантаженні сторінки поміняти текст у полі вводу на "I'm okay!". При кліку на кнопку вивести повідомлення з текстом "Message: ...", замість трьох крапок підставити текст з поля вводу.<br>Створити блок 100 х 40 пх жовтого кольору, при кліку на який вивести повідомлення з назвою тега (назву тега отримати програмно) і змінити колір фону на зелений.</p>
+			<p>3. Задано масив: [7, 2, "35", 1, 16, 8, "html", 's', 99]. Потрібно видалити з масива строкові дані, добавити числа 5 і 40, відсортувати масив за зростанням і вивести результат в консоль.</p>
+			<p>4. Задано блок id="list", в ньому - список переліку кольорів веселки. Елементи списку мають від 1 до 3 класів, 1-й клас описує колір, решта - довільні, використайте декілька класів "good" та "bad". Потрібно скриптом змінити колір тексту відповідно до кольору веселки. Порахувати кількість елементів списку, які мають класи "good" та "bad" (окремо) та результат вивести у консоль у вигляді масиву.</p>
+			<p>5. Через 5 секунд після відкриття сторінки вивести на екран повідомлення "5 seconds!".</p>
+			<p>6. Зробити таймер, що починає відлік з 3:30, рахує посекундно у зворотньому напрямку і після досягнення значення 0:00 замість цифр видає текст "BOOM!!!" (прим.: тероризм - це погано).</p>
+			<p>7. Зробити годинник, що відображає в браузері поточні дату та час - день, місяць, рік, день тижня, години, хвилини, секунди. Синхронізацію проводити 1 раз на 5 хвилин.<br>Виконання: раціонально створити масив змінних [Y, M, D, d, h, m, s] та 3 функції: синхронізацію з годинником комп’ютера; функцію, що повертає оформлену строку з датою та часом та функцію, яка буде робити розрахунки додавання секунди та перевірки хвилин, годин і т.п. на перевищення допустимих значень. В таймері setInterval потрібно зробити додавання секунди, виведення строки та 1 раз на 300 циклів проводити синхронізацію.<br>Зауваження. Можна щосекунди брати системний час та виводити його вбудованими функціями, типу .toString(), .toLocaleString() і т.п., але перед нами стоїть задача навчитися оперувати складовими дати та часу.</p>
+			<p>8. Створити масиви і вивести їх в консоль:<br>з 20 випадкових дробових чисел від 0 до 1;<br>з 30 випадкових цілих чисел від 1 до 100;<br>з трьох строк тексту випадкової довжини від 8 до 16 символів;<br>з 6-и чисел, що відповідають кодам символів строки "Hello!".</p>
+			<p>9. Створити двовимірний масив 10х10 випадкових чисел від 1 до 10. Підрахувати: середнє значення всіх цифр, мінімальне та максимальне значення сумм цифр у колонках і рядках.</p>
+			<p>10. Задано строку "Lorem ipsum dolor sit anem". Визначте її довжину, перетворіть у строку з символами у верхньому регістрі, виведіть у консоль, поверніть все у нижній регістр (включаючи перший символ). Розбийте строку на слова, створивши масив, порахуйте кількість слів. Знайдіть позиції строк "sum", "em" (2 шт), "dog" (0 шт). Виведіть в консоль підстроку між двома "em" (не включаючи самі em). Замініть у першої строки "ipsum" на "dog" і виведіть результат у консоль.</p>
+			<p>&nbsp;</p>
+			<p>11. Створіть функцію, що має 4 параметра і виводить в консоль строку у вигляді "1 <=> 2 <=> 3". Два параметра повинні бути обов’язковими.</p>
+			<p>12. Створіть функцію, в яку можна передавати довільну кількість параметрів. Викличте функцію з декількома параметрами (слова - марки автомобілів). Виведіть у консоль об’єкт arguments цієї функції. Модифікуйте функцію, щоб вона виводила в консоль всі свої атрибути через кому і пробіл (в кінці коми і пробіла бути не повинно): "Мерседес, Рено, БМВ, Хонда, Таврія"</p>
+			<p>&nbsp;</p>
+			<p>100. Створити калькулятор з полем input і 16-а кнопками: цифри, 4 арифметичні дії, знак "=" і кнопка очищення "С". Текстове поле зробити тільки для читання, заборонити введення більше, ніж 10 цифр.</p>
+		</section>
+
+		<!-- 1 -->
+		<!--<script>
+			var obj = {};
+			console.log(obj);
+			console.log(window);
+			console.log(document);
+			console.log(document.body);
+			var div_ooo = document.getElementById("ooo");
+			console.log(div_ooo);
+		</script>
+		<div id="ooo"></div>-->
+
+		<!-- 2 -->
+		<!--<form>
+			<p><label><input type="text" id="text" value="Hello!"></label></p>
+			<p><input type="button" value="Click me!" onclick="alert('Message: '+document.getElementById('text').value);"></p>
+		</form>
+		<script>
+			alert("Hello!");
+		</script>-->
+
+		<!-- 3 -->
+		<!--<script>
+			var arr = [7, 2, "35", 1, 16, 8, "html", 99];
+			console.log("Start array: "+arr);
+			console.log("Variant 1:");
+			for (var i = 0; i < arr.length; i++){
+				if (typeof(arr[i]) != "number") {
+					console.log("del "+arr[i]);
+					arr.splice(i,1);
+					i--;
+				}
+			}
+			console.log("Result 1:   "+arr+"\n\nVariant 2:");
+			arr = [7, 2, "35", 1, 16, 8, "html", 99];
+			i=0;
+			while(i<arr.length){
+				if (typeof(arr[i])!="number") {
+					console.log("del "+arr[i]);
+					arr.splice(i,1);
+				} else {
+					i++;
+				}
+			}
+			console.log("Result 2:   "+arr+"\n\nVariant 3:");
+			var arr2 = [7, 2, "35", 1, 16, 8, "html", 99];
+			arr = [];
+			for (i = 0; i < arr2.length; i++){
+				if (typeof(arr2[i]) == "number") {
+					console.log("add "+arr2[i]);
+					arr.splice(arr.length,0,arr2[i]);
+				}
+			}
+			console.log("Result 3:   "+arr);
+
+			console.log("Add 5, 40.");
+			arr.splice(arr.length, 0, 5);
+			arr[arr.length] = 40;
+			console.log(arr);
+			arr.sort();
+			console.log(arr);
+			var tmp;
+			for (i = 0; i < arr.length; i++){
+				for (j = 0; j < arr.length-1; j++){
+					if(arr[j]>arr[j+1]){
+						tmp = arr[j+1];
+						arr[j+1] = arr[j];
+						arr[j] = tmp;
+					}
+				}
+			}
+			console.log(arr);
+			arr = [7, 2, 1, 16, 8, 99, 5, 40];
+			arr.sort(sortArr);
+			function sortArr(a,b){
+				if (a > b) return 1;
+				if (a < b) return -1;
+			}
+			console.log(arr);
+		</script>-->
+
+		<!--<form>
+			<p><label><input type="text" id="ms" value="Hi2!"></label></p>
+			<p><input type="button" value="Click me" onclick="alert('Message: ' + msa.value);"></p>
+		</form>
+
+		<script>
+			var msa = document.getElementById("ms");
+			msa.value = "Hello! good Day!";
+		</script>-->
+
+		<script>
+			var s='На склад завезено 240 кг гарбузів, 120 кг яблук та 70 кг папайї';
+			console.log([s.search(/\d+/),s.match(/\d+/g)]);
+			function aac(a, b, c){
+				console.log(arguments);
+			}
+			aac(5,'ok',9,"nps",7);
+		</script>
+
+		<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+	</div>
+</div>
+
+</body>
+</html>

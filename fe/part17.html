@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frontend. Заняття 17.</title>
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="format-detection" content="telephone=no">
+  <link type="text/css" rel="stylesheet" href="css/styles.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+  <div class="resize">
+
+    <h1>Заняття 17. Навігація по DOM. Події (events).</h1>
+    <section>
+      <h2>Навігація по DOM.</h2>
+      <p>Взагалі, поняття DOM належить до будь-якого структурованого документа, не обов’язково HTML. Ми розглядатимемо його тільки стосовно до веб-сторінки.</p>
+      <p>DOM - Document Object Model, об’єктна модель документа. Іншими словами - це деревовидна структура HTML-документа, що містить всі його теги, атрибути тегів, вміст тегів (текст).</p>
+      <p>Є 2 типи вузлів (node): тег і текст.</p>
+      <p>Наступні методи є як у кореневого елемента document, так і у всіх елементів DOM.</p>
+      <code>
+        &lt;p id="time"&gt;3:&lt;span id="sec"&gt;30&lt;/span&gt;&lt;/p&gt;<br><br>
+        var time = document.getElementById('time');<br>
+        var sec = time.getElementById('sec');
+      </code>
+      <p>Всі потрібні методи важко знати в інтернеті, але IDE phpStorm гарно підказує їх: <strong>document.get...</strong></p>
+      <p><a href="https://learn.javascript.ru/traversing-dom">https://learn.javascript.ru/traversing-dom</a></p>
+      <p>document.querySelector("input.phone"); - новий метод, подібний до способу роботи jQuery.</p>
+      <p><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList">time.classList</a>.</p>
+    </section>
+
+    <section>
+      <h2>Події.</h2>
+      <p>В js є підтримка декількох десятків подій.</p>
+      <p><strong>Подія</strong> - реакція браузера на зовнішні зміни: рух мишкою, клік, скролл, кінець завантаження сторінки, ресурса, об’єкта, натискання кнопок клавіатури і т.п.</p><br><br>
+      <h3>Клік</h3>
+      <p>
+        <span class="js-click">span</span>
+        <strong class="js-click">strong</strong>
+        <a href="http://crcl.cf" class="js-click">link</a>
+		<i class="js-click">i</i>
+		<em class="js-click">em</em>
+		<q class="js-click">q</q>
+      </p>
+      <div id="click">== Result for click ==</div><br><br>
+      <div id="clickXY" style="width: 200px; height: 100px; background: silver; border: 1px solid grey;"></div>
+      <script>
+        var clickElems = document.getElementsByClassName('js-click');
+        for (var i=0; i<clickElems.length; i++){
+          clickElems[i].onclick = function(event){
+            document.getElementById('click').innerHTML = this.tagName;
+            console.log(event);
+          }
+        }
+        function clickXY(e){ e.target.innerHTML = 'Click: ' + e.clientX + ' - ' + e.clientY + '<br>OffsetTop: ' + e.target.offsetTop; }
+        document.getElementById('clickXY').onclick = clickXY;
+      </script>
+
+      <div class="copycode">
+        <a href="#code1" class="js-copy">COPY</a>
+        <pre id="code1">
+&lt;p>
+  &lt;span class="js-click">span&lt;/span>
+  &lt;strong class="js-click">strong&lt;/strong>
+  &lt;a href="http://crcl.cf" class="js-click">link&lt;/a>
+&lt;/p>
+&lt;div id="click">== Result for click ==&lt;/div>&lt;br>&lt;br>
+&lt;div id="clickXY" style="margin-bottom: 100px; width: 200px; height: 100px; background: silver; border: 1px solid grey;">&lt;/div>
+
+&lt;script>
+  var clickElems = document.getElementsByClassName('js-click');
+  for (var i=0; i&lt;clickElems.length; i++){
+    clickElems[i].onclick = function(event){
+      document.getElementById('click').innerHTML = this.tagName;
+      console.log(event);
+    }
+  }
+  function clickXY(e){ e.target.innerHTML = 'Click: ' + e.clientX + ' - ' + e.clientY + '&lt;br>OffsetTop: ' + e.target.offsetTop; }
+  document.getElementById('clickXY').onclick = clickXY;
+&lt;/script></pre>
+      </div>
+      <p style="margin-bottom: 200px;"><strong>Завдання.</strong> Заборонити перехід по посиланню.<br>При кліку виводити поточну дату та час замість імені тега.<br>Добавити &lt;p id="dat">test&lt;/p>, який реагуватиме на клік тією ж функцією.</p>
+
+
+      <h3>Отримання та втрата фокуса.</h3>
+	  <p style="margin-bottom: 100px;"><label>Focus: <input type="text" class="js-focus"></label></p>
+	  <script>
+	    var focus = document.querySelector('.js-focus');
+	    focus.onfocus = function(){ this.style.background = 'yellow'; }
+	    focus.onblur = function(){ this.style.background = 'white'; }
+	    document.onfocus = function(){ document.title = 'Welcome!'; }
+	    document.onblur = function(){  document.title = 'Good bye'; }
+	  </script>
+
+	<div class="copycode">
+	  <a href="#code2" class="js-copy">COPY</a>
+	  <pre id="code2">
+&lt;p style="margin-bottom: 100px;">&lt;label>Focus: &lt;input type="text" class="js-focus">&lt;/label>&lt;/p>
+
+&lt;script>
+  var focus = document.querySelector('.js-focus');
+  focus.onfocus = function(){ this.style.background = 'yellow'; }
+  focus.onblur = function(){ this.style.background = 'white'; }
+  document.onfocus = function(){ document.title = 'Welcome!'; }
+  document.onblur = function(){  document.title = 'Good bye'; }
+&lt;/script></pre>
+	</div>
+
+
+      <h3>Рух курсора миші.</h3>
+      <p>Подивіться в консолі результати виводу - tatget. Зажміть ліву, праву, середню кнопки і рухайте мишкою в межах блока.</p>
+      <p>Зверніть увагу на різницю clientY та layerY (якщо у вас сторінка прокручена).</p>
+      <div id="mousemove" style="width: 400px; background: silver; border: 1px solid grey;">
+        <span>0</span><br>
+        <span>1</span><br>
+        <span>2</span><br>
+        <span>3</span><br>
+        <span>4</span><br>
+        <span>5</span>
+      </div>
+
+      <script>
+        function r(){ return Math.round(Math.random()*100);}
+        var mousemove = document.getElementById('mousemove');
+        mousemove.onmousemove = function(event) {
+          console.log(event);
+          mousemove.getElementsByTagName('span')[0].innerHTML = event.layerX + ' - ' + event.layerY;
+        };
+        mousemove.onmouseenter = function(e) {
+          mousemove.getElementsByTagName('span')[1].innerHTML = 'Mouse enter ' + r();
+        };
+        mousemove.onmouseout = function(e) {
+          mousemove.getElementsByTagName('span')[2].innerHTML = 'Mouse out ' + r();
+        };
+        mousemove.onmouseover = function(e) {
+          mousemove.getElementsByTagName('span')[3].innerHTML = 'Mouse over ' + r();
+        };
+        mousemove.onmousedown = function(e) {
+          mousemove.getElementsByTagName('span')[4].innerHTML = 'Mouse down ' + r();
+        };
+      </script>
+
+      <div class="copycode">
+        <a href="#code3" class="js-copy">COPY</a>
+        <pre id="code3">
+&lt;div id="mousemove" style="margin-bottom: 100px; width: 400px; background: silver; border: 1px solid grey;">
+  &lt;span>0&lt;/span>&lt;br>
+  &lt;span>1&lt;/span>&lt;br>
+  &lt;span>2&lt;/span>&lt;br>
+  &lt;span>3&lt;/span>&lt;br>
+  &lt;span>4&lt;/span>&lt;br>
+  &lt;span>5&lt;/span>
+&lt;/div>
+
+&lt;script>
+  function r(){ return Math.round(Math.random()*100);}
+  var mousemove = document.getElementById('mousemove');
+  mousemove.onmousemove = function(event) {
+    console.log(event);
+    mousemove.getElementsByTagName('span')[0].innerHTML = event.layerX + ' - ' + event.layerY;
+  };
+  mousemove.onmouseenter = function(e) {
+    mousemove.getElementsByTagName('span')[1].innerHTML = 'Mouse enter ' + r();
+  };
+  mousemove.onmouseout = function(e) {
+    mousemove.getElementsByTagName('span')[2].innerHTML = 'Mouse out ' + r();
+  };
+  mousemove.onmouseover = function(e) {
+    mousemove.getElementsByTagName('span')[3].innerHTML = 'Mouse over ' + r();
+  };
+  mousemove.onmousedown = function(e) {
+    mousemove.getElementsByTagName('span')[4].innerHTML = 'Mouse down ' + r();
+  };
+&lt;/script></pre>
+      </div>
+      <p style="margin-bottom: 200px;"><strong>Завдання.</strong> Модифікуйте скрипт так, щоб він показував координати відносно блока, а не всієї сторінки.<br>Виводьте також інформацію про натиснуту кнопку миші - праву, ліву, середню.<br>Виводьте в консоль координати точки клієнтської області екрану в момент відпускання кнопки миші.</p>
+    </section>
+
+  </div>
+</div>
+
+
+
+
+<script>
+var copybuttons = document.getElementsByClassName('js-copy');
+for (var i=0; i<copybuttons.length; i++){
+  copybuttons[i].addEventListener('click', function(event) {
+    event.preventDefault();
+    console.log(this.getAttribute('href'));
+    var code = document.querySelector(this.getAttribute('href'));
+    console.log(code);
+    var range = document.createRange();
+    range.selectNode(code);
+    window.getSelection().addRange(range);
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copy command was ' + msg);
+    } catch(err) {
+      console.log('Oops, unable to copy');
+    }
+    window.getSelection().removeAllRanges();
+  });
+}
+</script>
+
+
+</body>
+</html>

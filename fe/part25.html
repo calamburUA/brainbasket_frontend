@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 25.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.dub { color: #999;}
+		.dub span { color: #000;}
+		.blk span { color: #000;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Ajax.</h1>
+
+		<section>
+			<p><strong>AJAX</strong> - асинхронний обмін даними з сервером (без перезавантаження сторінки).</p>
+			<p>Ajax не є самостійною технологією, а лише мостом між java-script та серверним скриптом.</p>
+			<code>
+				$.ajax({<br>
+				&nbsp;&nbsp;type: "POST",<br>
+				&nbsp;&nbsp;url: "some.php",<br>
+				&nbsp;&nbsp;data: "type=getPosts&number=5&count=3",<br>
+				&nbsp;&nbsp;success: function(msg){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;alert( "Відповідь сервера: " + msg );<br>
+				&nbsp;&nbsp;}<br>
+				});
+			</code>
+			<p>Використовуючи метод <strong>POST</strong> ми відправляємо на сервер у скрипт <strong>some.php</strong> запит з такими даними:<br>type = "getPosts";<br>number = 5;<br>count = 3.</p>
+			<p>На сервері виконається скрипт some.php, він отримає вхідні дані $_POST = [ type: 'getPosts', number: 5, count: 3 ]</p>
+			<p>Використовуючи ці дані він може виконати певні дії, наприклад:<br><strong>type: 'getPosts'</strong> - звернутися до бази даних та отримати з неї записи;<br><strong>number: 5</strong> - вибрати записи починаючи з п’ятого;<br><strong>count = 3</strong> - і вибрати три записа, тобто, 5, 6 та 7.<br>Отримані записи з бази даних можна повернути назад AJAX-скрипту у вигляді строки тексту чи HTML-коду, XML чи JSON (JavaScript Object Notation).</p>
+			<p>Наприклад, PHP-скрипт сформує такий масив даних та відправить його назад користувачу:</p>
+			<code>
+				{ posts: [<br>
+				&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;number: 5,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;date: "2016-04-11 08:14:06",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;title: "Сніданок",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;text: "Це мій сьогоднішній сніданок",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;img: "images/IMG0625.JPG",<br>
+				&nbsp;&nbsp;},<br>
+				&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;number: 6,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;date: "2016-04-11 14:12:06",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;title: "ЗДАВ ЕКЗАМЕН!!!",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;text: "Можете мене привітати, я здав вишку! В п’ятницю ще ОБЖ і я вільний!!",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;img: "images/happy.png",<br>
+				&nbsp;&nbsp;},<br>
+				&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;number: 7,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;date: "2016-04-11 16:05:24",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;title: "Мій кіт",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;text: "Муркота. Люблю його.",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;img: "images/IMG0628.JPG",<br>
+				&nbsp;&nbsp;}<br>
+				]}
+			</code>
+			<p>Тепер наша задача зводиться до того, щоб розібрати, розпарсити отримані дані, створити з них HTML-код та вбудувати його в якусь частину нашої сторінки, можливо, видаливши якісь вже неактуальні дані.</p>
+			<p>В принципі, можна написати PHP-скрипт, що буде присилати вже готовий шмат HTML-коду і наша задача значно спроститься. Але такий підхід зараз рідко використовується. Так само, як з виходом HTML5 остаточно розділилися дані та їх оформлення, так і в цьому випадку - бекенд повинен повертати тільки дані, а фронтенд - формувати з них те, що йому потрібні. І зміна дизайну сайта не повинна зачіпити скрипти на сервері.</p>
+		</section>
+		<br><br><br><br>
+		<section>
+			<h2>Завдання.</h2>
+			<p><a href="https://github.com/poshtarboba/ajax_test.git">https://github.com/poshtarboba/ajax_test.git</a></p>
+			<p>Проект заливаєте в свій каталог на FTP, і там тестуєте.</p>
+		</section>
+		
+		
+		
+	</div>
+</div>
+
+</body>
+</html>

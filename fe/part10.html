@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 10.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 10.</h1>
+
+		<section>
+			<h2>10.1. Підключення зовнішніх шрифтів з Google Fonts.</h2>
+			<p>Часто в макеті використовуються нестандартні шрифти, які відсутні у більшості користувачів інтернету, або взагалі - фірмовий шрифт.</p>
+			<p>В першу чергу перевірте наявність шрифта на сервісі <a href="https://www.google.com/fonts">Google Fonts</a>. Часто використовують шрифт Open Sans, зробіть пошук "google fonts Open Sans" і за першим посиланням потрапите на <a href="https://www.google.com/fonts/specimen/Open+Sans">сторінку потрібного шрифта</a>.</p>
+			<p>На цій сторінці нас цікавить посилання в верхній правій частині: "<a href="https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans">Open Open Sans in Google Fonts &raquo;</a>".</p>
+			<p>На новій сторінці ви можете вибрати деякі параметри шрифта:<br>
+				&nbsp;&nbsp;1. Різні види накреслення.<br>
+				&nbsp;&nbsp;2. Набір символів для різних мов.<br>
+				&nbsp;&nbsp;3. Тег &lt;link&gt;, який необхідно вставити в заголовок &lt;head&gt; для підключення шрифта.<br>
+				&nbsp;&nbsp;4. Приклад застосування шрифта у стилях.<br></p>
+			<div class="image">
+				<img src="images/part10_1_1.png" alt="Google fonts screenshot">
+				<p>Зображення 10.1.1. Пункти 1 і 2.</p>
+			</div>
+			<div class="image">
+				<img src="images/part10_1_2.png" alt="Google fonts screenshot">
+				<p>Зображення 10.1.2. Пункти 3 і 4.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>10.2. Підключення зовнішніх шрифтів з файлів.</h2>
+			<p>Якщо у макеті використовується фірмовий, комерційний чи малорозповсюджений шрифт - його необхідно сконвертувати у формати веб-шрифтів і підключити їх.</p>
+			<p>Для конвертування є зручний інструмент <a href="http://www.fontsquirrel.com/">FontSquirrel</a>. Цей сервіс готує повний пакет зі шрифтів і CSS-файлів. Якщо він відмовиться конвертувати - доведеться робити це вручну.</p>
+			<p>Скористайтесь одним з онлайн-конверторів, наприклад, <a href="https://cloudconvert.com/">CloudConvert</a>. Загружаємо по черзі наші файли шрифтів, обираємо для конвертування формати: <strong>woff</strong>, <strong>eot</strong>, <strong>svg</strong>.</p>
+			<p>Після того, як отримаєте всі файли - скопіюйте їх у каталог <strong>fonts</strong>. Сюди ж можна помістити і файл стилів з підключенням шрифта:</p>
+			<code>
+				@font-face {<br>
+				&nbsp;&nbsp;font-family: 'open_sansregular';<br>
+				&nbsp;&nbsp;src: url('opensans-webfont.eot');<br>
+				&nbsp;&nbsp;src: url('opensans-webfont.eot?#iefix') format('embedded-opentype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff2') format('woff2'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff') format('woff'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.ttf') format('truetype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.svg#open_sansregular') format('svg');<br>
+				&nbsp;&nbsp;font-weight: normal;<br>
+				&nbsp;&nbsp;font-style: normal;<br>
+				}
+			</code>
+			<p>Якщо у вас файл fonts.css розташований в тій же папці, що і шрифти, то в url шрифтів можна вказувати тільки ім’я файлу шрифта. Якщо він знаходиться в папці CSS, то необхідно вказати шлях до файлів шрифтів:</p>
+			<code>
+				src: url('../fonts/opensans-webfont.eot');
+			</code>
+			<p><strong class="danger">Зверніть увагу!</strong> Коли підключаєте файл <strong>SVG</strong> - через решітку у імені файла необхідно вказати id шрифта:</p>
+			<div class="image">
+				<img src="images/part10_2_1.png" alt="SVG font id">
+				<p>Зображення 10.2.1. ID шрифта в файлі SVG.</p>
+			</div>
+			<p>Якщо підключаєте декілька шрифтів з одним іменем та різним накресленням, наприклад, <strong>Open Sans Regular</strong> і <strong>Open Sans bold</strong> (їх імена відповідно open_sansregular і open_sansbold), то їх логічно підключити одним іменем, але різними стилями:</p>
+			<code>
+				@font-face {<br>
+				&nbsp;&nbsp;font-family: 'OpenSans';<br>
+				&nbsp;&nbsp;src: url('opensans-webfont.eot');<br>
+				&nbsp;&nbsp;src: url('opensans-webfont.eot?#iefix') format('embedded-opentype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff2') format('woff2'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff') format('woff'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.ttf') format('truetype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.svg#open_sansregular') format('svg');<br>
+				&nbsp;&nbsp;font-weight: normal;<br>
+				&nbsp;&nbsp;font-style: normal;<br>
+				}<br>
+				@font-face {<br>
+				&nbsp;&nbsp;font-family: 'OpenSans';<br>
+				&nbsp;&nbsp;src: url('opensans-webfont-bold.eot');<br>
+				&nbsp;&nbsp;src: url('opensans-webfont-bold.eot?#iefix') format('embedded-opentype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.woff2') format('woff2'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.woff') format('woff'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.ttf') format('truetype'),<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.svg#open_sansbold') format('svg');<br>
+				&nbsp;&nbsp;font-weight: bold;<br>
+				&nbsp;&nbsp;font-style: normal;<br>
+				}
+			</code>
+			<p>Після чого шрифт можна використовувати на сайті:</p>
+			<code>
+				h1 { font-style: "OpenSans", Helvetica, Arial, sans-serif;}
+			</code>
+		</section>
+
+		<p><a href="files/proj4_biznes-expert.zip">Макет сайта "Бизнес-эксперт".</a></p>
+		<p><a href="files/proj_tables_20151124.zip">proj_tables_20151124.zip - таблиці від 2015-11-24.</a></p>
+
+
+	</div>
+</div>
+
+</body>
+</html>

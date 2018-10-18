@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 20.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 20. jQuery.</h1>
+		<section>
+			<p><strong>$</strong> - символ, допустимий в імені змінної:<br><strong>var $name = 'Alexandr';<br>var $$$mony$$$ = '$ 300';<br>var xa$ker = {look: false};</strong></p>
+			<p>Введіть в консолі наступні строки коду і переконайтесь:</p>
+			<code>
+				var a = 5;<br>
+				var $ = 7;<br>
+				var price$ = a + $;<br>
+				var gold_$_gold = a * $;<br>
+				var $$$money$$$ = Math.pow(a, $);<br>
+				console.log( price$ + ' ' + gold_$_gold + ' ' + $$$money$$$ );
+			</code>
+		
+			<p><strong>jQuery</strong> - javascript-бібліотека, розроблена для полегшення роботи з DOM веб-сторінки.</p>
+			<p><a href="http://jquery.com/">http://jquery.com</a> - домашня сторінка бібліотеки.</p>
+			<p><a href="http://api.jquery.com/">http://api.jquery.com</a> - документація</p>
+			<p><a href="http://code.jquery.com/">http://code.jquery.com</a> - версії</p>
+			<p>Версії:</p>
+			<code>
+				1.x - підтримує старі версії браузерів, в т.ч. IE 6-7<br>
+				2.x - прибрана підтримка старих версій браузерів<br>
+				3.x - підтримуються тільки свіжі версії браузерів і такі, що мають значну долю ринку<br>
+				3.x slim - "тонка" версія, видалено ajax та деякі функції, що рідко використовуються.
+			</code>
+			<p>&nbsp;</p>
+			<p>Підключення та використання jQuery:</p>
+			<code>
+				&lt;script src="js/jquery-2.2.1.min.js">&lt;/script><br><br>
+				// Потрібно дочекатися момента завершення завантаження бібліотеки jQuery, щоб її використовувати:<br>
+				document.ready(function() {<br>
+				&nbsp;&nbsp;...  // код jQuery<br>
+				&nbsp;&nbsp;...<br>
+				});<br><br>
+				// Бажаний спосіб використання jQuery:<br>
+				jQuery(function($) {<br>
+				&nbsp;&nbsp;...  // код jQuery<br>
+				&nbsp;&nbsp;...<br>
+				});
+			</code>
+			<p class="danger">Не забувайте у своїх js-файлах чи скриптах робити "обгортку" для jQuery-коду !!!</p>
+			<p>&nbsp;</p>
+			<p>Вибір елемента, з яким будемо працювати:</p>
+			<code>
+				$(селектор).метод();<br><br>
+				$('#content .box').html('<span>Hello!</span>');<br>
+				$('ul').find('li a[title]').css('color','red');
+			</code>
+			<p><b>$ === jQuery</b>, в цьому можна переконатися переглянувши код внизу скрипта <a href="http://code.jquery.com/jquery-latest.js">code.jquery.com/jquery-latest.js</a>.</p>
+			<p>Запустіть наступний код в консолі будь-якого сайту, що використовує jQuery:</p>
+			<code>
+				console.log( $('p') );<br>
+				console.log( jQuery('p') );
+			</code>
+			<p>Результат пошуку функцією jQuery - це завжди "масив" елементів, навіть якщо шукати по id.</p>
+			<p>Масив цей - специфічний, він є обгорткою до колекції елементів js.</p>
+			<p>Серед розробників є негласна домовленість змінну з результатом пошуку починати з символа долара, цим ми говоримо, що у змінній зберігається jQuery-об'єкт:</p>
+			<code>
+				var p = document.getElementsByTagName('p');<br>
+				var $p = $('p');<br>
+				console.dir(p);<br>
+				console.dir($p);<br><br>
+				/* ************ */<br><br>
+				console.dir(p[0]);<br>
+				console.dir($p.get(0));<br>
+				console.dir($p.eq(0));<br><br>
+				/* ************ */<br><br>
+				console.dir($p);<br>
+				console.dir($(p));
+			</code>
+			
+			<p>&nbsp;<br>&nbsp;<br>&nbsp;</p>
+			<p>Навігація по DOM:</p>
+			<p><strong>$('ul li').length;</strong> - визначає кількість знайдених елементів.</p>
+			<p><strong>$('p').children();</strong> - знаходить безпосередні дочірні елементи.</p>
+			<p><strong>$('ul').find('li.active');</strong> - знаходить всі дочірні елементи.</p>
+			<p><strong>$('p').parent();</strong> - знаходить безпосереднього батька елемента.</p>
+			<p><strong>$('p').parents('.wrapper');</strong> - знаходить всіх батьків елемента (що задовільняють параметру, якщо він заданий).</p>
+			<p><strong>$('ul li.active').prev();</strong> - переходить до попереднього сестринського елемента.</p>
+			<p><strong>$('ul li.active').next();</strong> - переходить до наступного сестринського елемента.</p>
+			<p><strong>$('ul li.active').prevAll();</strong> - вибирає всі попередні сестринські елементи.</p>
+			<p><strong>$('ul li.active').nextAll();</strong> - вибирає всі наступні сестринські елементи.</p>
+			<p><strong>$('ul li').first();</strong> - взяти перший елемент з набору.</p>
+			<p><strong>$('ul li').last();</strong> - взяти останній елемент з набору.</p>
+			<p><strong>$('ul li').eq(4);</strong> - повертає 5-й елемент зі знайдених (починаючи з 0).</p>
+			<p><strong>$('ul li')[4]</strong> - аналогічно.</p>
+			<p><strong>$('ul li').each(function(){ $(this).text('test'); });</strong> - виконати дію з кожним знайденим елементом.</p>
+			<p><strong>$('ul li').filter(':even').css('color', 'red');</strong> - відфільтрувати елементи.</p>
+			<p><strong>$('ul li').not('.active');</strong> - видалити зі знайденого набору елементів ті елементи, що відповідають селектору.</p>
+			<p>var $li = $('li');</p>
+			<p><strong>$('p').add($li);</strong> - добавити елементи до набора (знайти всі &lt;p>, добавити до них всі &lt;li>).</p>
+			<p>&nbsp;</p>
+			<p>Робота з елементами:</p>
+			<p><strong>$('ul li').html('<strong>Hello!</strong>');</strong> - повертає html-вміст селектора (і змінює, якщо задано параметр).</p>
+			<p><strong>$('ul li').text('Hello!');</strong> - повертає текстовий вміст селектора (і змінює, якщо задано параметр).</p>
+			<p><strong>$('p').css('color', 'rgba(255,12,64,0.4)');</strong> - змінити один стиль у елементів.</p>
+			<p><strong>$('p').css({'width': '32px', 'height': '60px'});</strong> - змінити декілька стилів у елементів.</p>
+			<p>&nbsp;</p>
+			<p>Робота з атрибутами:</p>
+			<p><strong>$('p').addClass('active');</strong> - добавити клас до елементів.</p>
+			<p><strong>$('p').removeClass('active');</strong> - видалити клас до елементів.</p>
+			<p><strong>$('p').toggleClass('active');</strong> - "переключити" клас: добавити - якщо немає, видалити - якщо є.</p>
+			<p><strong>$('p').hasClass('active');</strong> - перевірка наявності класа.</p>
+			<p><strong>$('p').attr('title');</strong> - повертає значення атрибута, вказаного як параметр.</p>
+			<p><strong>$('a').attr('href', 'http://google.com');</strong> - змінити значення атрибута.</p>
+			<p><strong>$('.checkbox').prop('checked');</strong> - робота зі статом елемента форми: checked, disabled... Метод повертає true чи false в залежності від того, чи вказаний стан задано для елемента, чи ні.</p>
+			<p><strong>$('.checkbox').prop('disabled', true);</strong> - змінити значення стану.</p>
+			<p><strong>$('.checkbox').removeProp();</strong> - видалити стан.</p>
+			<p><strong>$('p').removeAttr('class');</strong> - видалити атрибут.</p>
+			<p><strong>$('p').data('value');</strong> - повертає значення атрибута data-value.</p>
+			<p><strong>$('p').data('value', '32 кг');</strong> - змінює значення атрибута data-value (створює такий атрибут, якшо його немає).</p>
+			<p><strong>$('p').removeData('value');</strong> - видаляє атрибут data-value.</p>
+			<p><strong>$('input[name="phone"]').val();</strong> - повертає введене значення елемента форми.</p>
+			<p><strong>$('input[name="phone"]').val('0382-55-77-33');</strong> - змінює значення елемента форми.</p>
+		</section>
+		<section>
+			<h2>Завдання.</h2>
+			<p>Збережіть собі в папку нового проекту файл <a href="part20task.html">part20task.html</a>, підключіть jQuery і файл скриптів script.js.</p>
+			<p>1. Вивести в консоль кількість елементів списку .rainbow: "Rainbow count: 7".</p>
+			<p>2. Добавити клас 'active' до списка .rainbow і всі елементи розфарбувати у відповідні кольори класами col1..col7.</p>
+			<p>3. Вивести в консоль текст і html-код елемента .bl цього списку.</p>
+			<p>4. В списку #test розфарбуйте елементи test червоним кольором класом .active, елементи subtest - passive.</p>
+			<p>5. Першому елементу кожного списка сторінки задайте синю тінь для текста, останньому - зелену.</p>
+			<p>6. Елементу .lol мають передувати 2 елемента з синьою та зеленою тінню, а також наступні 2 елемента повинні мати синю та зелену тінь. Висоту елемента .lol задати 40px, розмір шрифта і lineheight - 24px / 28px.</p>
+			<p>7. В списку з title="links" текст посилань зробіть відповідним до його href (замість букв повинна бути URL на ссилку; селектор зробити вам допоможе лекція <strong>part9a</strong>).</p>
+			<p>8. Ссилки на FTP пофарбуйте класом у зелений колір.</p>
+			<p>&nbsp;</p>
+			<p>9. Знайдіть елемент .special, додайте його батьку клас 'specwrap', батьківському елементу .silver додайте клас 'active'.</p>
+			<p>10. Пронумеруйте всіх батьків елемента .special атрибутом data-parent="..." числами 1, 2, 3, 4... починаючи від безпосереднього батька. Перегляньте код елементів у дебаггері, має бути щось типу такого: &lt;strong data-parent="1"></p>
+			<p>11. Візьміть елемент #test, знайдіть всіх його дітей першого порядку (ті, що з текстом test), окрім елемента .lol, зробіть текст капслочним, додавши клас .upper.</p>
+			<p>12. В елементі .week виберіть дітей 's, em, i, .big', скориставшись методом .filter(), добавте до них клас 'passive', щоб задати світлосірий колір тексту.</p>
+		</section>
+		<section>
+			<h2>Події (events):</h2>
+			<p><strong>$('p').click(function(e){ ... });</strong> - добавити функцію кліка на об’єкти.</p>
+			<p><strong>$('input.text').change(function(e){ ... });</strong> - змінилося значення елемента форми (викликається при втраті фокуса).</p>
+			<p><strong>$('input.text').focus(f).blur(f);</strong> - отримання та втрата фокуса елементом форми, посиланням.</p>
+			<p><strong>$('input.text').hover(f, f);</strong> - ховер-ефект: дві функції на отримання і втрату ховера.</p>
+			<p><strong>$('input.text').keydown(f).keyup(f).keypress(f);</strong> - події клавіатури.</p>
+			<p><strong>$('img').mousedown(f).mouseup(f).mouseenter(f).mouseleave(f).mousemove(f)....;</strong> - події миші.</p>
+			<p><strong>$('img').load(f);</strong> - елемент завантажено (використовується для ресурсів, документа).</p>
+			<p><strong>$('body').ready(f).unload(f);</strong> - події готовності до використання, вигрузки елемента.</p>
+			<p><strong>$(window).resize(f).scroll(f);</strong> - події на зміну розміра, скролл.</p>
+			<p>&nbsp;</p>
+			<p><strong>$('img').on('event-name', function(event){ ... });</strong> - чіпляння функції на елемент.</p>
+			<p><strong>$('img').off(event);</strong> - видалення функції з елемента.</p>
+			<p><strong>$('img').one('event-name', function(event){ ... });</strong> - функція один раз викличеться і сама видалиться.</p>
+			<p><strong>.live(), .bind(), .deletage()</strong> - застарілі методи чіпляння функцій на елементи.</p>
+			<p>&nbsp;</p>
+		</section>
+		<section>
+			<h2>Завдання.</h2>
+			<p>1. Якщо зажати Shift і водити мишу по екрану - в консоль повинні виводитися імена тегів елементів, на які наводиться миша.</p>
+			<p>2. При кліку на елементи списку .rainbow виводьте alert з іменем класу цього елемента і кольором фону через пробіл.</p>
+			<p>3. При отриманні фокуса текстових полів форми підсвічуйте їх жовтим фоном (.col3).</p>
+			<p>4. Виводьте в консоль букви, які нажимає користувач, знаходячись в текстових полях. Забороніть в полі телефона натискання клавіші 0 (return false;).</p>
+			<p>5. Зніміть властивість checked з радіокнопок, добавте цю властивість до чекокса.</p>
+			<p>6. Для елемента .check добавте метод, щоб при кліку в нього змінювався стан (клас 'active') і при цьому переключався чекбокс.</p>
+			<p>20. При кліку на дітей елемента .week повинні з’являтися alert’и з текстом, що міститься в цих елементах.</p>
+			<p>21. Аналогічно у елементів .week2, але якщо є атрибут data-click, то алерт має вивестися не більше стількох раз, як вказано в цьому параметрі, а якщо немає цього параметра - лише 1 раз.</p>
+			<p>22. Добавте до .week ще один елемент &lt;b>newday&lt;/b>, переконайтесь, що клік на нього не працює. Для динамічно створених елементів події потрібно задавати після їх створення. Або використайте таку конструкцію:<br>
+			<strong>$('body').on('click', '.week b', function(){});</strong> - подія підв’язується на статичний елемент, а другий параметр функції вказує на ціль події (target of event), таким чином всі динамічно створювані елементи, що відповідають селектору, будуть реагувати на подію без чіпляння на них функцій подій.</p>
+			<p>23. В список .wave добавте 30 елементів з текстом 'wave', зробіть "стадіонну хвилю" - при наведенні на елемент йому задається клас .wave1, його сусідам - .wave2, далі сусідам - .wave3, 4 і т.д. до .wave8.</p>
+		</section>
+		<section>
+			<p><strong>$('a.google').trigger('click');</strong> - викликати подію програмно.</p>
+			<p><strong>$('li').get(4);</strong> - повертає 5-й елемент з набору.</p>
+			<p>.eq(i) - повертає jQuery-об’єкт, .get(i) - повертає JS-об’єкт.<br>$('li').eq(0).get(0) === $('li').eq(0)[0] === $('li').get(0)</p>
+			<p><strong>$('li').has('ul')</strong> - вибирає тільки ті елементи, які містять в собі елементи з атрибута метода (вибрати всі LI в яких всередині є UL).</p>
+			<p><strong>$('#list').width()</strong> - повертає внутрішню ширину елемента.</p>
+			<p><strong>$('#list').innerWidth();</strong> - повертає значення ширини об’єкта, включаючи паддінги.</p>
+			<p><strong>$('#list').outerWidth();</strong> - повертає значення ширини об’єкта, включаючи паддінги та бордери.</p>
+			<p><strong>$('#list').outerWidth(true);</strong> -  - повертає значення ширини об’єкта, включаючи паддінги, бордери, маргіни.</p>
+			<p><strong>$('#list').height().innerHeight().outerHeiht();</strong> - аналогічно для висоти.</p>
+			<p><strong>$('li').index('.active');</strong> - повертає номер елемента в наборі, (індекс елемента LI.active серед всіх LI).</p>
+			<p><strong>$('#list').offset();</strong> - повертає координати лівої верхньої точки об’єкта відносно документа.<br>$('#list').offset().left - від лівого краю.<br>$('#list').offset().top - від верхнього краю.</p>
+			<p><strong>$('#list').position();</strong> - повертає координати лівої верхньої точки об’єкта відносно батьківського елемента.<br>$('#list').position().left<br>$('#list').position().top</p>
+		</section>
+		<br><br><br><br>
+
+	</div>
+</div>
+
+</body>
+</html>

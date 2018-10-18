@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 6.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 6.</h1>
+
+		<section>
+			<h2>6.1. Семантика HTML5.</h2>
+			<p>В HTML попередньої, четвертої редакції, всі блоки визначалися тегом &lt;div&gt;, всі списки, навігаційні меню, переліки - тегами &lt;ul&gt;, &lt;li&gt;. Пошуковим системам було важко розібратися де яка інформація, що до чого відноситься.</p>
+			<p>В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).</p>
+			<p>Для оформлення хедера введено тег &lt;header&gt;, для футера - &lt;footer&gt;, для бокової панельки - &lt;aside&gt;, і так далі.</p>
+			<div class="image">
+				<img src="images/part6_1_1.jpg" alt="HTML5 boxes">
+				<p>Зображення 6.1.1. Блоки HTML5.</p>
+			</div>
+			<p>Стандарт HTML5 дозволяє не закривати деякі блоки, такі як &lt;/html&gt;, &lt;/body&gt;, &lt;/p&gt;, &lt;/li&gt;, &lt;/tr&gt;, &lt;/td&gt; і т.ін.; а теги &lt;html&gt;, &lt;head&gt;, &lt;body&gt; можна і не відкривати.</p>
+			<p>Валідний HTML5-код може виглядати ось так:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;title&gt;Frontend. Заняття 6.&lt;/title&gt;<br>
+				&lt;meta charset="utf-8"&gt;<br>
+				&lt;meta name="format-detection" content="telephone=no"&gt;<br>
+				&lt;link type="text/css" rel="stylesheet" href="css/styles.css"&gt;<br>
+				&lt;div id="mainwrapper"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="resize"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Заняття 6.&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML4 всі блоки визначалися тегом &amp;lt;<span class="black">div</span>&amp;gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="image"&gt;&lt;img src="cat.jpg" alt="cat"&gt;&lt;div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;Цей текст буде "висячим", не матиме батьківського тега  &amp;lt;<span class="black">p</span>&amp;gt;, залишати в коді "висячий" текст - поганий стиль верстки.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Далі наведено приклад списку:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Посилання у списку&lt;/a&gt;.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;div&gt;Блок &amp;lt;<span class="black">div</span>&amp;gt; у списку.&lt;div&gt;&lt;div&gt;Навіть два.&lt;div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Список другого рівня:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку другого рівня.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Останній параграф і закриваючі блоки &amp;lt;<span class="black">div</span>&amp;gt;.<br>
+				&nbsp;&nbsp;&lt;div&gt;<br>
+				&lt;div&gt;
+			</code>
+			<p>Але я дуже раджу всі теги писати і закривати їх, на те є декілька причин: дисциплінює верстальника, попереджає неочевидні помилки, при модифікації сторінки однозначно і повністю описує тег та інші.</p>
+			<p><a href="http://www.olunka.ru/18-tegov-ne-trebuyushhix-obyazatelnogo-zakrytiya/">Невелика статейка з топа видачі гугла по запиту на цю тему</a>.</p>
+			<p><strong>Завдання:</strong> оформити HTML-код проектів "КолесовЪ" та "Плодовое" відповідно до вимог HTML5. Підкорегувати CSS, замінивши в селекторах класи, що стали непотрібними, на нові теги.</p>
+		</section>
+
+		<section>
+			<h2>6.2. CSS border - границі блоків.</h2>
+			<p><strong>border-width: 2px;</strong> - ширина границі.</p>
+			<p><strong>border-style: dashed;</strong> - тип границі, може приймайти значення <strong>solid</strong> (суцільна лінія), <strong>dashed</strong> (пунктир), <strong>dotted</strong> (крапочки) та ще декілька значень екзотичного характеру.</p>
+			<p><strong>border-color: #f00;</strong> - колір границі.</p>
+			<p><strong>border-color: #f00 #0f0 #ff0 #f0f;</strong> - можна задати окремі кольори для всіх границь, синтаксис подібний до стилів margin та padding.</p>
+			<p><strong>border: 2px solid #2e2e2e;</strong> - об’єднуючий стиль.</p>
+			<p><strong>border-left, border-top, border-right, border-bottom</strong> - всі вищеописані параметри можна задати окремо для певної границі.</p>
+			<p><strong>border-left-width, border-bottom-color</strong> - є багато параметрів, що починаються з border-..., можна окремо задати для певної границі тип, колір, товщину.</p>
+			<p><strong>border-radius: 10px;</strong> - задання радіусів скруглення.</p>
+			<p><strong>border-radius: 10px 20px 30px 40px;</strong> - задання радіусів скруглення для кожного кута окремо починаючи з лівого верхнього і рухаючись за годинниковою стрілкою.</p>
+			<p><strong>border-radius: 10px/20px 20px/10px 30px/50px 40px/5px;</strong> - задання еліпсоподібних скруглень.</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

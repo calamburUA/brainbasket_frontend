@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 15.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.ex15 { margin-bottom:40px; outline:1px solid #305995;}
+		.ex15 p { padding:10px 15px;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 15. Гумова, чуйна та адаптивна верстка.</h1>
+
+		<section>
+			<h2>15.1. Термінологія.</h2>
+			<p><strong>Фіксована верстка (fixed layouts)</strong> - верстка, при якій чітко задана ширина сайта, на моніторах з невеликим розширенням екрана з'явиться горизонтальна полоса прокрутки.</p>
+			<p><strong>Гумова верстка (rubber layouts)</strong> - верстка, при якій сайт займає всю ширину екрана і при зменшенні вінка браузера сайт звужується. Можуть застосовуватись стилі <em>min-width</em> та <em>max-width</em>.</p>
+			<p><strong>Адаптивна верстка (adaptive layouts)</strong> - верстка, при якій відбувається адаптація сайту під певну ширину вікна браузера, на невеликих екранах деякі блоки можуть ховатися, відображатися по-іншому.</p>
+			<p><strong>Чуйна верстка (отзывчивая, responsive layouts)</strong> - поєднання гумової та адаптивної верстки, часто із застосуванням скриптів.</p>
+			<p>Спочатку весь інтернет був гумовим, тому що не було стилів, не було можливості задати ширину блокам.</p>
+			<p>З появою табличної верстки з'явилась можливість робити фіксовану верстку. Та більшість сайтів все ж таки була гумовою, причина - невеликі розміри екранів, шириною 640, 1024 та 1280 пікселів.</p>
+			<p>Блочна верстка спрощувала створення фіксованої верстки, а поява широкоформатних екранів типу 16:9 та шириною 1600, 1920 гумову верстку потіснила: стало не зручно, коли інформація "розкидана" по великому широкому екрану, строки тексту занадто довгі.</p>
+			<p>Широке розповсюдження мобільних пристроїв з невеликими екранами призвело до появи адаптивної та чуйної верстки, для мобільних телефонів перестали робити окремі сайти.</p>
+		</section>
+
+		<section>
+			<h2>15.2. Типові макети гумової верстки.</h2>
+
+			<div class="clr ex15" style="height:150px; background:#aaffaa;">
+				<p><strong>Блок 1</strong></p>
+			</div>
+
+			<div class="clr ex15">
+				<p>clear: both;</p>
+				<div style="float:left; width:200px; height:150px; background:#aaffaa;">
+					<p><strong>Блок 1</strong><br>float: left;<br>width: 200px;</p>
+				</div>
+				<div style="margin-left:220px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 2</strong><br>margin-left: 220px;</p>
+				</div>
+			</div>
+
+			<div class="clr ex15">
+				<p>clear: both;</p>
+				<div style="float:right; width:200px; height:150px; background:#aaffaa;">
+					<p><strong>Блок 1</strong><br>float: right;<br>width: 200px;</p>
+				</div>
+				<div style="margin-right:220px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 2</strong><br>margin-right: 220px;</p>
+				</div>
+			</div>
+
+			<div class="clr ex15">
+				<p>clear: both;</p>
+				<div style="float:left; width:200px; height:150px; background:#aaffaa;">
+					<p><strong>Блок 1</strong><br>float: left;<br>width: 200px;</p>
+				</div>
+				<div style="float:right; width:250px; height:150px; background:#aaffaa;">
+					<p><strong>Блок 2</strong><br>float: right;<br>width: 250px;</p>
+				</div>
+				<div style="margin-left:220px; margin-right:270px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 3</strong><br>margin-left: 220px;<br>margin-right: 270px;</p>
+				</div>
+			</div>
+
+			<div class="clr ex15">
+				<p>display: table;</p>
+				<div style="float:left; width:200px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 1</strong><br>display: table-cell;<br>width: 200px;</p>
+				</div>
+				<div style="float:right; width:250px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 3</strong><br>display: table-cell;<br>width: 250px;</p>
+				</div>
+				<div style="margin-left:202px; margin-right:252px; height:220px; background:#aaffaa;">
+					<p><strong>Блок 2</strong><br>display: table-cell;</p>
+				</div>
+			</div>
+
+		</section>
+
+		<section>
+			<h2>15.3. Адаптивна верстка.</h2>
+			<p>Для того, щоб задавати блокам необхідні стилі при певній ширині екрана браузера застосовується така конструкція стилів:</p>
+			<code>
+				.map { display: hidden; }<br>
+				.wrapper { width: 980px; }<br><br>
+				@media screen and (min-width: 800px) {<br>
+				&nbsp;&nbsp;.map { display: block; }<br>
+				}<br>
+				@media screen and (max-width: 1006px) {<br>
+				&nbsp;&nbsp;.wrapper { width: 100%; }<br>
+				}<br>
+			</code>
+		</section>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p><a href="files/psd/superposilka.zip">Макет "Суперпосилка"</a></p>
+		<p>&nbsp;</p>
+		<p><a href="files/psd/rubber.zip">Макет "Rubber"</a></p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+
+	</div>
+</div>
+
+</body>
+</html>

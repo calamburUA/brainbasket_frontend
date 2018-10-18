@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 21.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 21. Модифікація DOM в jQuery.</h1>
+		<section>
+			<p><strong>$('p').before('&lt;div>...&lt;/div>');</strong> - вставляє HTML-код чи елемент перед кожним вибраним елементом.</p>
+			<p><strong>$('p').after('&lt;div>...&lt;/div>');</strong> - вставляє HTML-код чи елемент після кожного вибраного елемента.</p>
+			<p><strong>$('p').prepend('&lt;span>...&lt;/span>');</strong> - вставляє HTML-код чи елемент всередину кожного вибраного елемента на початок.</p>
+			<p><strong>$('p').append('&lt;span>...&lt;/span>');</strong> - вставляє HTML-код чи елемент всередину кожного вибраного елемента в кінець.</p>
+			<p>var target = $('#userpic');<br>
+			<strong>$('em').prependTo(target).appendTo(target).insertBefore(target).insertAfter(target);</strong> - елемент чи HTML-код добавити до цілі - target.</p>
+			<p><strong>$('#userpic').clone();</strong> - клонувати елемент (у пам’ять) для його подальшого використання.</p>
+			<p><strong>$('li').remove();</strong> - видаляє вибрані елементи.</p>
+			<p><strong>$('li').detach();</strong> - видаляє вибрані елементи.</p>
+			<p><strong>$('ul').empty();</strong> - видаляє всі дочірні елементи (очищає вибрані елементи).</p>
+			<p><strong>$('ul').wrap('&lt;div class="wrap">&lt;/div>');</strong> - робить обгортку довкола кожного з вибраних елементів.</p>
+			<p><strong>$('p').wrapAll('&lt;div class="wrap" />');</strong> - робить одну спільну обгортку для всіх вибраних елементів.</p>
+			<p><strong>$('p').wrapInner('&lt;span />');</strong> - робить обгортку для контента кожного вибраного елемента (огортає всередині).</p>
+			<p><strong>$('p').unwrap();</strong> - видаляє обгортку (безпосереднього батька).</p>
+		</section>
+		<section>
+			<h2>Завдання.</h2>
+			<p>41. В списку ul[title="links"] перед кожним елементом http-посилання добавте &lt;li>_________&lt;/li>, а після кожного ftp-посилання - &lt;li>^^^^^^^^^&lt;/li>.</p>
+			<p>42. В списку #test кожному елементу "test" добавте на початок &lt;b>!!!&lt;/b>, а до елементів subtest добавте в кінець &lt;i>???&lt;/i>.</p>
+			<p>43. Клонуйте список #test та добавте його в кінець веб-сторінки. Зауважте, що на одній сторінці не повинно бути двох елементів з однаковим id.</p>
+			<p>44. Пронумеруйте елементи списку #test: 1. test, 2. test і т.д., видаліть кожен парний елемент списку (бажано без циклу, селектором <strong>:even</strong>). Якщо при цьому буде видалено список з елементами subtest, то змініть умову задачі: потрібно видалити непарні елементи.</p>
+			<p>45. Очистіть елементи списку "subtest".</p>
+			<p>46. Огорніть елементи .week та .week2 тегом div.col5.</p>
+			<p>47. Огорніть всі списки разом тегом section.</p>
+			<p>48. Виберіть всіх дітей елемента .week, і огорніть їх контент тегом &lt;span class="check" /></p>
+		</section>
+		<br><br><br><br>
+
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 9a.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<link type="text/css" rel="stylesheet" href="fonts/stylesheet.css">
+	<style>
+		.def, .def2 { padding: 40px 0; font-family: open_sansregular}
+		.def label { display: block;}
+		.def label span { display: inline-block; width: 100px; vertical-align: top;}
+		.def label input,
+		.def label textarea { width: 250px; outline: none;}
+		.special input + span { display: inline-block; padding: 0 4px;}
+		.special input:checked + span { background: #f00; color: #fff;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+
+<div class="image">
+	<img src="images/rukojop.jpg" alt="margin-top">
+	<p class="danger">margin-top: 100px; margin: 35px 0;</p>
+</div>
+<p class="noheight">height: 40px;</p>
+<p>&nbsp;</p>
+<p class="big">font-size + line-height <img src="images/friends.gif" alt="friendship"></p>
+<p>&nbsp;</p>
+<div class="clear_example clr">
+	<div>float: left;</div>
+	<div>float: right;</div>
+</div>
+
+<code>
+	Структура робочого каталогу:<br>
+	<strong>work/</strong><br>
+	2015-11/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;plodove/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>styles.css</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image1.jpg</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image2.jpg</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.png</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>index.html</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psd/<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.zip</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.psd</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.psd</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>futbolki_20151104.zip</em>
+</code>
+
+<p><strong>Обнулення стилів браузера:</strong></p>
+<code>
+	html { padding:0; margin:0;}<br>
+	body { position:relative; margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}<br>
+	.clr:after { content:""; display:block; height:0; overflow:hidden; font-size:0; line-height:0; clear:both;}<br>
+	<br>
+	p { margin:0; padding:10px 0;}<br>
+	a { color:#0000ff; text-decoration:underline;}<br>
+	a:hover { color:#7777ff;}<br>
+	a img { border:none;}<br>
+	h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}<br>
+	strong { font-weight:bold;}<br>
+	em { font-style:italic;}<br>
+	form, menu, iframe { display:block; margin:0; padding:0; border:none;}<br>
+	ol, ul, dl, li, dt, dd { margin:0; padding:0; list-style:none;}<br>
+	* { outline:none;}
+</code>
+
+<h1>Заняття 9a.</h1>
+
+<section>
+	<h2>9a.1. Специфічні селектори CSS.</h2>
+	<p><strong>A B</strong> - задає стилі для всіх елементів B, що знаходяться всередині тега A на будь-якому рівні вкладення.</p>
+	<p><strong>A &gt; B</strong> - задає стилі лише для дочірніх елементів першого рівня.</p>
+	<p><strong>A ~ B</strong> - задає стилі для всіх елементів B, що слідують після елемента A.</p>
+	<p><strong>A + B</strong> - задає стилі для елемента B, що йде одразу після елемента A.</p>
+	<code>
+		&lt;p&gt;&lt;span&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;<br>
+		p a { color: green;}<br>
+		p > span { background: red;}<br>
+		p > a { background: green;} /* не буде працювати */<br>
+		<br>
+		&lt;p class="nobel"&gt;Some text.&lt;/p&gt;<br>
+		&lt;p&gt;...&lt;/p&gt;<br>
+		&lt;h2&gt;Header&lt;/h2&gt;<br>
+		.nobel ~ h2 { color: green;}<br>
+		.nobel + p { color: blue;}<br>
+		.nobel + h2 { color: navy;} /* не буде працювати */
+	</code>
+	<p><strong>[атрибут]</strong> - задає стилі для елементів, у яких задано атрибут.</p>
+	<p><strong>[атрибут="значення"]</strong> - задає стилі для елементів, у яких задано атрибут та конкретне значення.</p>
+	<p><strong>[href^="ftp://"]</strong> - вибирає елементи, у яких вказаний атрибут починається з вказаного значення.</p>
+	<p><strong>[href$=".png"]</strong> - вибирає елементи, у яких вказаний атрибут закінчується вказаним значенням.</p>
+	<p><strong>[href*="google"]</strong> - вибирає елементи, у яких значення вказаного атрибута містить строку, вказану у значенні.</p>
+	<p><strong>[class~="green"]</strong> - вибирає елементи у яких в значенні атрибута є задана підстрока, відділена пробілами від інших підстрок.</p>
+	<code>
+		Виділити червоним і жирним всі елементи, в яких використовуються внутрітегові стилі:<br>
+		[style] { color: red; font-weight: bold;}<br>
+		<br>
+		Добавити рамку до зображень, в яких атрибут alt має значення "Фото":<br>
+		img[alt="Фото"] { border: 2px solid #aaa;}<br>
+		<br>
+		Всі посилання на FTP зробити зеленого кольору:<br>
+		a[href^="ftp://"] { color: green;}<br>
+		<br>
+		Всі посилання на gif-файли зробити сірого кольору:<br>
+		a[href$=".gif"] { color: #777;}<br>
+		<br>
+		Сховати всі посилання, які містять в собі підстроку "yandex":<br>
+		a[href*="yandex"] { display: none;}<br>
+		<br>
+		Вибирає всі елементи в яких є клас "green" і задає їм зелений колір:<br>
+		[class~="green"] { color: green;}<br>
+		.green { color: green;} /* виконує ту саму дію */
+	</code>
+
+</section>
+
+		</div></div>
+</body>
+</html>

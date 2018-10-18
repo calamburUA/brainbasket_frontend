@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 23.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h2>Завдання 1. Меню, акордеон, таби</h2>
+			<p>1. Створіть трирівневе меню, скопіюйте його тричі. При кліку на span повинно відкритися чи сховатися меню другого рівня (плавно, з анімацією). Кожне з трьох меню повинно працювати окремо, відкривати тільки підменю того пункту, по якому клацнули.</p>
+			<p>Можете використати наступний код, зробити три копії та реформат коду.</p>
+			<code>
+				&lt;ul class="expmenu">&lt;li>&lt;span>Пункт 1&lt;/span>&lt;ul>&lt;li>&lt;span>Пункт 1-1&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 1-1-1&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 1-1-2&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;li>&lt;span>Пункт 1-2&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 1-2-1&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 1-2-2&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 1-2-3&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;li>&lt;a href="#">Пункт 1-3&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;li>&lt;a href="#">Пункт 2&lt;/a>&lt;/li>&lt;li>&lt;span>Пункт 3&lt;/span>&lt;ul>&lt;li>&lt;span>Пункт 3-1&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 3-1-1&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 3-1-2&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 3-1-3&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;li>&lt;span>Пункт 3-2&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 3-2-1&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;/ul>&lt;/li>&lt;li>&lt;span>Пункт 4&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 4-1&lt;/a>&lt;/li>&lt;li>&lt;span>Пункт 4-2&lt;/span>&lt;ul>&lt;li>&lt;a href="#">Пункт 4-2-1&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 4-2-2&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 4-2-3&lt;/a>&lt;/li>&lt;li>&lt;a href="#">Пункт 4-2-4&lt;/a>&lt;/li>&lt;/ul>&lt;/li>&lt;/ul>&lt;/li>&lt;/ul>&lt;hr>
+			</code>
+			<p>2. Створіть елемент інтерфейса "акордеон", скоріюйте його тричі. Кожен з трьох елементів повинен працювати окремо від інших. Заголовок активного блока повинен якось виділятися.</p>
+			<p>Особливістю елемента "акордеон" є те, що повинен відображатися тільки один блок. При відкритті наступного блока попередній повинен сховатися.</p>
+			<p>Порада: для активного стану блока зазвичай використовують клас "active", який прописують всьому блоку, в даному прикладі це буде тег &lt;li>.</p>
+			<p>Можете використати наступний код, зробити реформат коду.</p>
+			<p>Можете використати наступний код, зробити три копії та реформат коду.</p>
+			<code>
+				&lt;ul class="akkordion">&lt;li>&lt;p class="akk-title">Заголовок 1&lt;/p>&lt;div class="akk-box">&lt;p>Lorem ipsum dolor sit amet, vidit signiferumque an cum, nemore facilisis abhorreant eam no. Nam ut ullum velit petentium, sea te eleifend intellegebat.&lt;/p>&lt;/div>&lt;/li>&lt;li>&lt;p class="akk-title">Заголовок 2&lt;/p>&lt;div class="akk-box">&lt;p>Tale euripidis at qui, pro sumo munere aeterno ut.&lt;/p>&lt;/div>&lt;/li>&lt;li>&lt;p class="akk-title">Заголовок 3&lt;/p>&lt;div class="akk-box">&lt;img src="http://stephboreldesign.com/wp-content/uploads/2012/03/lorem-ipsum-logo.jpg" alt="" width="200">&lt;/div>&lt;/li>&lt;li>&lt;p class="akk-title">Заголовок 4&lt;/p>&lt;div class="akk-box">&lt;p>Quo ea expetenda periculis vituperatoribus. Eleifend senserit an qui, modus partem est eu. Id soluta facilis complectitur qui, sea homero fastidii gloriatur ut, qui tritani eruditi definitionem te.&lt;/p>&lt;/div>&lt;/li>&lt;/ul>&lt;hr>
+			</code>
+			<p>Згадайте стилі та оформіть акордеон приблизно так:</p>
+			<div style="">Заголовок 1</div>
+			<div style="">
+				<p>Lorem ipsum dolor sit amet, vidit signiferumque an cum, nemore facilisis abhorreant eam no. Nam ut ullum velit petentium, sea te eleifend intellegebat.</p>
+			</div>
+			<div style="">Заголовок 2</div>
+			<div style="">Заголовок 3</div>
+
+			<p>3. Таби (теж три блока, в цьому випадку пільнуйте, щоб id не повторювалися):</p>
+			<code>
+				&lt;ul class="tabs"><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_a1">Таб 1&lt;/a>&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_a2">Таб 2&lt;/a>&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_a3">Таб 3&lt;/a>&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_a4">Таб 4&lt;/a>&lt;/li><br>
+				&lt;/ul><br>
+				&lt;div id="tab_a1">&lt;img src="...">&lt;/div><br>
+				&lt;div id="tab_a2">&lt;img src="...">&lt;/div><br>
+				&lt;div id="tab_a3">&lt;img src="...">&lt;/div><br>
+				&lt;div id="tab_a4">&lt;img src="...">&lt;/div><br>
+				&lt;hr><br>
+				&lt;ul class="tabs"><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_b1">Таб 1&lt;/a>&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>&lt;a href="#tab_b2">Таб 2&lt;/a>&lt;/li><br>
+				...
+			</code>
+		</section>
+		
+		<section>
+			<h2>Завдання 2. Кнопка ScrollTop</h2>
+			<p>1. Створіть веб-сторінку висотою більше, ніж 2 екрана (можна скопіювати код під завданням)</p>
+			<p>2. Добавте кнопку зі стрілкою вгору, стилями зафіксуйте її в нижній правій частині екрану.</p>
+			<p>3. Напишіть скрипт, що буде прокручувати сторінку на початок.</p>
+			<p><em>Рекомендації:</em><br>jQuery-функція .scrollTop(0) прокручує сторінку моментально.<br>Для плавної прокрутки можна використати функцію анімації .animate({scrollTop: 0},500).<br>Прокрутку необхідно застосовувати до тегів html та body (для різних браузерів).</p>
+			<p>4. Зробіть, щоб кнопка прокрутки з’являлась тільки коли користувач прокрутить сайт більше, ніж на екран вниз, ховайте, коли сайт прокрутиться вгору.</p>
+			<p>5. Переробіть код так, щоб кнопка створювалася динамічно, скриптом, тільки на тих сторінках, для &lt;body> яких задано клас 'scrolltop'.</p>
+			<code>
+				&lt;img src="http://www.liiife.net/wp-content/uploads/2015/05/cats.jpg" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://www.cutecatgifs.com/wp-content/uploads/2014/07/cute-aww.gif" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://lolomoda.net/wp-content/uploads/qute.jpg" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://www.becauseimacat.com/wp-content/uploads/2015/12/Christmas-Cats-Dec-12-Cat-First-Christmas-Cat.png" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://domesticcatworld.com/wp-content/uploads/2012/10/catwhiskers.jpg" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://www.catbehaviorassociates.com/wp-content/uploads/2012/10/iStock_000000177340XSmall.jpg" alt="cat">&lt;br>&lt;br><br>
+				&lt;img src="http://www.guardianvetcentre.com/images/image/urinary-blockage-cat.jpg" alt="cat">&lt;br>&lt;br>
+			</code>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Завдання 3. Рухливий фон.</h2>
+			<p>1. Зробіть сторінку-мотиватор: має займати однин екран (не повинно бути полос прокруток), по центру - крупний напис з 1-3 слів, під ним - речення-пояснення, слоган.</p>
+			<p>2. Добавте фонове зображення. При рухах миші фон повинен рухатися з невеликою швидкістю у протилежну сторону.</p>
+			<p><em>Рекомендації:</em><br>висоту сторінки можна задати або скриптом, або стилями, вказавши у якості одиниць виміру vh.<br>Фонове зображення можна зробити різними способами: у вигляді картинки &lt;img>, фонового зображення для блока чи псевдоелемента.<br>Рухати це зображення можна змінюючи значення margin-top та margin-left, left та top, background-position.</p>
+			<p>3. Зробіть очі, що слідкують за курсором миші.</p>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Завдання 4*. Параллакс.</h2>
+			<p><strong>Параллакс</strong> - це рух різних шарів з різною швидкістю.</p>
+			<p>Зробіть веб-сторінку з декількома секціями (лендінг).</p>
+			<p>При прокрутці сторінки фон повинен прокручуватися повільно.</p>
+			<p>Зробіть декілька окремих слів, які б вертикально рухалися з різною швидкістю при прокрутці сторінки.</p>
+			<p>Зробіть декілька окремих слів, які б прилітали з-за меж екрану справа та зліва як тільки користувач докрутить до них.</p>
+			<p>Зробіть зображення, яке б "повзло" по нижньому краю екрана по мірі прокрутки сторінки зліва направо.</p>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Контрольне завдання. Слайдер.</h2>
+			<p><strong>Технічне завдання.</strong></p>
+			<p>1. На сторінці може розміщуватися 1 або більше слайдерів. Слайдер може складатися з блоків або бути у вигляді списку:</p>
+			<code>
+				&lt;div class="carusel"><br>
+				&nbsp;&nbsp;&lt;div>&lt;img src="..." alt="...">&lt;/div><br>
+				&nbsp;&nbsp;&lt;div>&lt;img src="..." alt="...">&lt;/div><br>
+				&nbsp;&nbsp;&lt;div>&lt;img src="..." alt="...">&lt;/div><br>
+				&nbsp;&nbsp;...<br>
+				&lt;/div><br><br>
+				&lt;ul class="cycle-gallery"><br>
+				&nbsp;&nbsp;&lt;li>Slide 1. Slogan.&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>Slide 2. New slogan.&lt;/li><br>
+				&nbsp;&nbsp;&lt;li>Slide 3. Another slogan.&lt;/li><br>
+				&nbsp;&nbsp;...<br>
+				&lt;/ul>
+			</code>
+			<p>2. Слайди повинні змінюватися циклічно з проміжком 3 секунди (по замовчуванню). Ефект зміни - через прозорість (fade) чи зсув слайда вліво.</p>
+			<p>3. Добавити кнопки навігації "Наступний слайд", "Попередній слайд". Слайдер не повинен глючити під час ручного перемикання (коли час автоматичного і ручного перемикання співпадають - можливі конфлікти, смикання анімації, подвоєння класів активного слайда).</p>
+			<p>4. Добавити кнопки посторінкової навігації: кружечки у такій же кількості, як і кількість слайдів. Активний кружечок повинен виділятися стилем. При кліку на елемент навігації слайдер повинен переключатися на відповідний слайд.</p>
+			<p>5. Слайдер зробити у вигляді компонента jQuery, тобто, він має підключатися методом jQuery: $('.carousel').mySuperSlider(); винести код слайдера в окремий js-файл.</p>
+			<p>6. Зробити підтримку параметрів, щоб можна було задавати швидкість слайдера, тип анімації, швидкість перемикання:<br>$('.carousel').mySuperSlider({ timeout: 3000, type: 'shiftleft', speed: 1000 });</p>
+			<p>7. Добавити події: ініціалізація слайдера, початок та кінець анімації, ручне переключення на попередній, наступний слайди та слайд за номером.</p>
+			<p>8. Добавити користувацькі функції (в файл scripts.js), які б реагували на події: виводили в консоль назву події, id чи номер слайдера, якщо в слайді є зображення, то під слайдером виводити мініатюрку зображення 120x90 px, а також текст зі слайдера.</p>
+			<code>
+				$('#slider2').on('next', function(){<br>
+				&nbsp;&nbsp;// [thumbnail]<br>
+				&nbsp;&nbsp;// текст слайдера<br>
+				&nbsp;&nbsp;// консоль: користувач натиснув кнопку Next в слайдері №2<br>
+				});
+			</code>
+		</section>
+		<br><br><br><br>
+
+	</div>
+</div>
+
+</body>
+</html>

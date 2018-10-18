@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 24.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.dub { color: #999;}
+		.dub span { color: #000;}
+		.blk span { color: #000;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Поліровка слайдера.</h1>
+
+		<section>
+			<h2>Рефакторінг кода на прикладі функцій слайдера</h2>
+			<p>Наприклад, є у нас три функції (записано псевдокодом):</p>
+			<code>
+				function nextSlide:<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;new_slide = slides.next or slides.first;<br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);<br><br>
+				function prevSlide:<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;new_slide = slides.prev or slides.last;<br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);<br><br>
+				function toSlide(n):<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;new_slide = slides.eq(n);<br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);
+			</code>
+			<p>Бачимо, що значна частина коду повторюється:</p>
+			<code class="dub">
+				function nextSlide:<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;<span>new_slide = slides.next or slides.first;</span><br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);<br><br>
+				function prevSlide:<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;<span>new_slide = slides.prev or slides.last;</span><br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);<br><br>
+				function toSlide(n):<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;<span>new_slide = slides.eq(n);</span><br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);
+			</code>
+			<p>В нашому випадку міняється тільки спосіб визначення наступного слайда в слайдері.</p>
+			<p>Таким чином, можна всі три функції об’єднати в одну, а те, що відрізняється, виконувати по якимось умовам.</p>
+			<p>Один з варіантів - добавити ще один параметр у функцію (для функції toSlide цей параметр вже задано).</p>
+			<p>Придумуємо умову:<br>1). якщо n == 'next', то треба переключити на наступний слайд;<br>2). якщо n == 'prev', то треба переключити на попередній слайд;<br>3). якщо n == 0, 1, 2, 3 і т.д., то переключити на слайд №n.</p>
+			<code>
+				function newSlide(n):<br>
+				&nbsp;&nbsp;clearTimeout;<br>
+				&nbsp;&nbsp;if n == 'prev':<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;new_slide = slides.prev or slides.last;<br>
+				&nbsp;&nbsp;else if n == 'next':<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;new_slide = slides.next or slides.first;<br>
+				&nbsp;&nbsp;else<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;new_slide = slides.eq(n);<br>
+				&nbsp;&nbsp;active_slide.removeActive.hide;<br>
+				&nbsp;&nbsp;new_slide.setActive.show;<br>
+				&nbsp;&nbsp;setTimeout(nextSlide);
+			</code>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Створення свого плагіна jQuery.</h2>
+			<p>Плагіни розповсюджуються окремими js-файлами (за потреби - ще css, images, fonts...)</p>
+			<p>Зараз наш слайдер виконується таким кодом:</p>
+			<code>
+				$(function(){<br>
+				&nbsp;&nbsp;$('.slider').each(function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;код ініціалізації слайдера, створення елементів керування, його запуск<br>
+				&nbsp;&nbsp;});<br>
+				// функції, що обслуговують слайдер:<br>
+				&nbsp;&nbsp;function fun1(slider){ ... }<br>
+				&nbsp;&nbsp;function fun2(slider){ ... }<br>
+				&nbsp;&nbsp;function fun3(slider, n){ ... }<br>
+				});
+			</code>
+			<p>Створення слайдера не дуже зручне, функції до нього не прив’язані. Зазвичай компоненти, плагіни підключаються таким чином:</p>
+			<code>
+				$('.slider').mySlider({ параметри });
+			</code>
+			<p>тобто, слайдери створюються до кожного знайденого елемента селектора, немає зовнішніх функцій, зручно задавати параметри.</p>
+			<p>Є усна угода, щоб плагіни jQuery називати таким чином: <strong>jquery.mySuperSlider.js</strong>, тому створіть новий файл відповідно до цього шаблона, підключіть його в html-коді після підключення jQuery.</p>
+			<p>Свою функцію по ініціалізації слайдера створюємо таким чином:</p>
+			<code>
+				$.fn.mySuperPuperPlugin = function(){<br>
+				&nbsp;&nbsp; ... код створення слайдера<br>
+				}
+			</code>
+			<p>Для функції бажано додати повернення певних об’єктів, частіше всього - тих самих, які функція отримує. Це дозволить робити ланцюжки функцій:</p>
+			<code>
+				$.fn.mySuperSlider = function(){<br><br>
+				&nbsp;&nbsp;this.each(function(){ ... });<br><br>
+				&nbsp;&nbsp;function fun1(slider){ ... }<br>
+				&nbsp;&nbsp;function fun2(slider){ ... }<br>
+				&nbsp;&nbsp;function fun3(slider, n){ ... }<br><br>
+				&nbsp;&nbsp;return this;<br>
+				}<br><br>
+				// запускаємо слайдер зі свого файла scripts.js:<br><br>
+				$('.slider').mySuperSlider().show().addClass('working').find('.slide').css('...');
+			</code>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Параметри.</h2>
+			<p>Наш слайдер тепер може працювати, але в нього всі параметри зашиті всередині кода: час та тип анімації, час між перемиканням слайдів і т.п.</p>
+			<p>Також примусово створюються кнопки навігації. Це все бажано задавати через параметри:</p>
+			<code>
+				$('#slider1').mySuperSlider();<br>
+				$('#slider2').mySuperSlider({time: 5000});<br>
+				$('#slider3').mySuperSlider({time: 8000, type: 'toLeft', nav: false});<br>
+				$('#slider4').mySuperSlider({duration: 100, pager: false});<br>
+			</code>
+			<p>Параметри можна створити так, задаючи значення по-замовчуванню:</p>
+			<code>
+				$.fn.mySuperSlider = function(options){<br>
+				&nbsp;&nbsp;options = $.extend(options, {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;time: 3000,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;type: 'fadeToggle',<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;nav: true,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;pager: true,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;duration: 400<br>
+				&nbsp;&nbsp;});<br>
+				&nbsp;&nbsp;this.each(function(){ ... });<br>
+				&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;return this;<br>
+				});
+			</code>
+			<p>Якщо користувач при виклику функції слайдера задасть свої значення - вони перезапишуться і слайдер буде запущено з користувацькими параметрами.</p>
+			<p>А в функції параметри будуть доступні через задану нами змінну options:</p>
+			<code class="blk">
+				...<br>
+				setTimeout(function(){...}, <span>options.time</span>);<br>
+				if (<span>options.nav</span>) { slider_wrapper.append( код кнопок &lt; та > );}<br>
+				if (<span>options.pager</span>) { код добавляння кружечків перемикання слайдів }<br>
+				function newSlide(...){<br>
+				&nbsp;&nbsp;if (<span>options.type == 'fadeToggle'</span>) { slide.fadeOut(<span>options.duration</span>); }<br>
+				&nbsp;&nbsp;if (<span>options.type == 'toLeft'</span>) { slide.animate('left', <span>options.duration</span>); }<br>
+				}<br>
+				...
+			</code>
+		</section>
+		<br><br><br><br>
+
+		<section>
+			<h2>Події.</h2>
+			<p>Хороший слайдер повинен мати так званик callback - це підтримка подій.</p>
+			<p>JavaScript має купу вбудованих подій, таких як клік та рухи мишкою, скролл, завантаження ресурсів, натискання кнопок, отримання та втрата фокуса...</p>
+			<p>Можна добавляти свої події. В нашому слайдері можуть бути такі події:<br>
+				- клік по кнопці навігації;<br>
+				- клік по пагеру;<br>
+				- початок анімації зміни слайда;<br>
+				- завершення зміни слайдера;<br>
+				- ховер-ефект (коли на слайдер навели мишу, коли забрали мишу);<br>
+				та інші.
+			</p>
+			<p>Приклади застосування подій:</p>
+			<p>Користувач може написати свою функцію, яка, наприклад, при наведенні миші на слайдер, зупине анімацію, а коли мишу буде прибрано - продовжити анімацію. Чи зробити напівпрозорим слайдер.</p>
+			<p>В слайдері справа наліво крутяться аватарки клієнтів з їх іменами, посадами, локацією. А десь поруч - з’являються та зникають методом fadeToggle їхні коментарі, цитати. Таким чином аватарки ми робимо звичайним слайдером, а при отриманні події зміни слайда буде змінюватися і коментар, цитата.</p>
+			<p>В слайдері прокручуються мініатюри товарів, а десь поруч з’являються велика фотка товара та його опис.</p>
+			<p>При початку анімації активний слайд якось нахиляється і відлітає, а на його місце прилітає наступний слайдер. Це регулюється початком та кінцем анцмації, застосуванням до слайдів ефектів анімації та трансформації.</p>
+			<p>&nbsp;</p>
+			<p>Події створюються методом .trigger(); - він викликає вказану у якості параметра подію.</p>
+			<code>
+				$.fn.mySuperSlider = function(){<br><br>
+				&nbsp;&nbsp;this.each(function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;$(this).trigger('clideCreated');<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;$(this).on('hover', function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).trigger('slideHover');<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+				&nbsp;&nbsp;});<br><br>
+				&nbsp;&nbsp;slider_wrap.find('a.next').on('click', function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;slider.trigger('slideNext');<br>
+				&nbsp;&nbsp;});<br><br>
+				&nbsp;&nbsp;active_slide.trigger('slideAnim').fadeOut(1000, function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;$(this).trigger('slideDone');<br>
+				&nbsp;&nbsp;});
+			</code>
+			<p>Для того, щоб подію використати - в своєму файліку scripts.js звертаємося до події так:</p>
+			<code>
+				$('.slider').on('clideCreated', function(){ ... });<br>
+				$('.slider').on('slideNext', function(){ ... });<br>
+				$('.slider').on('slideDone', function(){ ... });
+			</code>
+			<p>Зауважте, що всередині вашої функції значення $(this) буде не весь набір слайдерів сторінки, а лише один слайдер, який викликав подію.</p>
+			<p>Наприклад, у вас 3 слайдера, 1 з яких перемикається через 5 секунд, у всіх тривалість перемикання: 1 секунда.</p>
+			<p>Після загрузки сторінки у вас виникне три події slideCreated, через 3 секунди виникне 2 події slideAnim, через одну секунду - дві події slideDone, ще через секунду одна подія slideAnim, через одну секунду - подія slideDone останнього слайдера і дві події slideAnim перших двох слайдерів, і т.д.</p>
+		</section>
+		<br><br><br><br>
+
+	</div>
+</div>
+
+</body>
+</html>

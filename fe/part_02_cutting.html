@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 2.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<!--<section>
+			<h1>5. Структура макетів в форматі PSD.</h1>
+			<p>На відміну від “плоских” растрових зображень макет у файлі PSD зформований з окремих шарів: кожен елемент дизайну, фон, тіні, елементи тексту - це окремі шари чи фільтри (функції), накладені на шари. В макеті окрім звичайних растрових шарів можуть бути присутні векторні, текстові об’єкти. Будь-який шар можна включити чи виключити, перемістити, модифікувати окремо від решти шарів.</p>
+			<p>Шари можна обирати інструментом “Стрілка”, для полегшення вибору можна встановити такі налаштування:</p>
+			<p>Хороші дизайнери логічно групіюють елементи в папки, створюючи деревовидну структуру макета. Таким чином, можна легко відключити якийсь окремий шар, елемент, чи цілий блок. Погані дизайнери цим не обтяжують себе і шари в їхніх макетах мають вигляд довгого списку, з яким важко працювати.</p>
+		</section>-->
+
+		<h1>Заняття 2.</h1>
+
+		<section>
+			<h2>2.1. Налаштування phpStorm.</h2>
+			<p>Раджу встановити тему "Дракула", темний фон IDE менше втомлює зір:</p>
+			<code>
+				File &gt; Settings... &gt; Appearance &amp; Behavior &gt; Appearance
+			</code>
+			<p>Багато сучасних програм мають темний інтерфейс: Фотошоп, Екліпс, і т.п.</p>
+			<div class="image">
+				<img src="images/part4_0_1.png" alt="Screenshot">
+				<p>Зображення 2.1.1. Налаштування інтерфейса Dracula.</p>
+			</div>
+			<div class="image">
+				<img src="images/part4_0_2.png" alt="Screenshot">
+				<p>Зображення 2.1.2. Темний інтерфейс в Adobe Photoshop.</p>
+			</div>
+			<div class="image">
+				<img src="images/part4_0_3.png" alt="Screenshot">
+				<p>Зображення 2.1.3. Темна кольорова схема в Total Commander.</p>
+			</div>
+			<p>Далі - необхідно налаштувати відступи, табуляції:</p>
+			<div class="image">
+				<img src="images/part4_0_4.png" alt="Screenshot">
+				<p>Зображення 2.1.4. Налаштування табуляцій, відступів.</p>
+			</div>
+			<p>Коли починаєте новий проект чи переключаєтеся в інший, то поточний проект закриваєте і вибираєте "Open Directory". Не використовуйте IDE як звичайний блокнот з купою вкладок.</p>
+			<div class="image">
+				<img src="images/part4_0_5.png" alt="Screenshot">
+				<p>Зображення 2.1.5. Відкриття проекту.</p>
+			</div>
+			<p>При цьому в каталозі проекту створюється папка <strong>.idea</strong>. Тому бажано відкривати не папку html з вашим файлом index.html, а папку з назвою вашого проекту.</p>
+		</section>
+		
+		<section>
+			<h2>2.2. Налаштування Adobe Photoshop.</h2>
+			<div class="image">
+				<img src="images/part2_1_1.png" alt="Photoshop Screenshot">
+				<p>Зображення 2.2.1. Скріншот головного вікна Adobe Photoshop.</p>
+			</div>
+			<p>Для порізки спочатку нам необхідно трохи налаштувати фотошоп.</p>
+			<p>Першим чином включіть панель інструментів роботи з текстом:</p>
+			<code>
+				Window &gt; Character
+			</code>
+			<p>Ми будемо використовувати панелі <strong>Layers</strong>, <strong>Character</strong>, <strong>Paragraph</strong>, решту панелей можна прибрати, щоб вони нас не відволікали і не займали простору екрану.</p>
+			<p>Виберіть інструмент Move Tool (зліва перша іконка зверху), поставте галочку "Auto-Select" і в списку виберіть Layer. Це дозволить кліком мишки активізувати той шар, по якому елементу ми клацнули.</p>
+			<div class="image">
+				<img src="images/part2_1_2.png" alt="Move Tool">
+				<p>Зображення 2.2.3. Налаштування інструменту Move Tool.</p>
+			</div>
+			<p>Налаштуйте використання одиниць вимірювання, встановивши значення <strong>Pixels</strong> в перших двох пунктах:</p>
+			<code>
+				Edit &gt; Preferences &gt; Units &amp; Rules...
+			</code>
+			<div class="image">
+				<img src="images/part2_1_3.png" alt="Units and Rules">
+				<p>Зображення 2.2.3. Налаштування одиниць вимірювання.</p>
+			</div>
+			<p>За потреби можна переналаштувати розміщення тимчасових файлів фотошопа:</p>
+			<code>
+				Edit &gt; Preferences &gt; Performance...
+			</code>
+			<div class="image">
+				<img src="images/part2_1_4.png" alt="Performance">
+				<p>Зображення 2.2.3. Налаштування розміщення тимчасових файлів.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>2.3. Основні інструменти верстальника.</h2>
+			<div class="image">
+				<img src="images/part2_2_1.png" alt="Screenshot">
+				<p>Зображення 2.3.1. Інструменти верстальника.</p>
+			</div>
+			<div class="image">
+				<img src="images/part2_2_2.png" alt="Screenshot">
+				<p>Зображення 2.3.2. Панель шарів.</p>
+			</div>
+			<p><strong>Ctrl + H</strong> - прибрати блакитні лінії (направляючі).</p>
+		</section>
+
+		<section>
+			<h2>2.4. Структура веб-сторінки, елементи.</h2>
+		</section>
+
+		<section>
+			<h2>2.5. Робота з шарами.</h2>
+		</section>
+
+		<section>
+			<h2>2.6. Порізка макета.</h2>
+		</section>
+
+		<section>
+			<h2>2.7. Збереження зображень, типи файлів.</h2>
+			<code>
+				File &gt; Save For Web...<br>
+				Ctrl + Alt + Shift + S
+			</code>
+			<p>Формати файлів:</p>
+			<p><strong>JPG</strong> - для фотографій, великих фонових зображень;</p>
+			<p><strong>PNG</strong> - для всіх елементів дизайну, іконок, елементів з прозорістю;</p>
+			<p><strong>GIF</strong> - для дуже маленьких елементів з малою кількістю кольорів.</p>
+			<p><strong>Імена файлам</strong> потрібно давати з розумом, таким чином, щоб подібні файли знаходилися поруч в списку файлів. Для цього використовуються префікси.</p>
+			<div class="image">
+				<img src="images/part2_6_1.png" alt="File Names">
+				<p>Зображення 2.7.1. Іменування файлів, зліва - невірне.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>2.7. Домашнє завдання.</h2>
+			<p>Вирізати всі необхідні елементи з <a href="files/porezka_dz.zip">макету</a> інтернет-магазина футболок.</p>
+			<p>Результат заляти на FTP.</p>
+			<p><strong>Структура вашого робочого каталога на FTP і на робочому комп’ютері:</strong></p>
+			<code>
+				<strong>/home/</strong>, <strong>/%user_name%/</strong>, <strong>forntend/</strong> або <strong>verstka/</strong><br>
+				2015-11<br>
+				2015-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_izoterika<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_strahovka<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_magazin_eurohimiya<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tz<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>futbolki_20151204.zip</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;kolesov<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;project_name<br>
+				2016-01<br>
+				2016-02<br>
+				2016-03<br>
+				archive<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2014-09<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2014-10<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2014-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2014-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-01<br>
+				lifehacks<br>
+				my_projects<br>
+			</code>
+			<p><strong>Формат архівів:</strong></p>
+			<code>
+				<strong style="font-size: 2em; line-height: 3em;">projectName_date.zip</strong><br>
+				futbolki_20151110.zip<br>
+				futbolki_20151110a.zip<br>
+				futbolki_20151110b.zip<br>
+				futbolki_20151110c.zip<br>
+			</code>
+			<p>Для архівування використовуємо лише формат <strong>ZIP</strong>, всі сучасні операційні системи мають інструменти для розпакування zip-архівів. Архіви в форматах RAR, 7z можуть не розпакуватися у замовника.</p>
+			<p>Коли я перевірю ваше домашнє завдання - то зроблю файл-репорт з описом ваших помилок чи похвалою, що все добре і правильно зроблено:</p>
+			<code>
+				futbolki_20151110.txt
+			</code>
+			<p>Якщо ви допустили якісь незначні помилки і розумієте їх, як їх виправити і уникнути в майбутньому - то нову, виправлену версію на сервер можна не заливати.</p>
+			<p>Якщо наробили купу помилок, то роботу необхідно переробити, виправити і заляти на сервер з новою датою архіва.</p>
+		</section>
+	</div>
+</div>
+
+</body>
+</html>

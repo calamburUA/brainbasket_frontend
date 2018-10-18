@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 5.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		p.test { font-size: 24px; line-height: 1.4em;}
+		p.test a:hover { color: green !important;}
+		p.test a:active { color: red !important;}
+		p.test a:visited { color: silver;}
+		p.test a:link { color:orange;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 5.</h1>
+
+		<section>
+			<h2>5.1. Робота з jsFiddle.</h2>
+			<p><strong>jsFiddle</strong> - пісочниця для веб-девелоперів. Для повноцінної роботи необхідно зареєструватися і залогінитись.</p>
+			<p>Ця пісочниця являє собою 4 області: для введення блоків коду HTML, CSS, JS і для відображення результату.</p>
+			<div class="image">
+				<img src="images/part5_1_1.png" alt="jsFiddle">
+				<p>Зображення 5.1.1. Інтерфейс сервісу jsFiddle.</p>
+			</div>
+			<p>Після того, як ви ввели потрібні данні - можна отримати досить коротке посилання на цю роботу, щоб поділитися ним з іншими.</p>
+			<p>jsFiddle використовують для запитань виду "чого в мене не працює, неправильно відображається", щоб показати реалізацію фрагментів верстки, для спільної роботи над проблемою.</p>
+			<p>Останнім часом з’явилася можливість спільної роботи - Collaboration.</p>
+			<p><strong>Завдання:</strong> <a href="https://jsfiddle.net/">зареєструватися і залогінитися на сайті</a>, спробувати вставляти шматки коду зі своїх проектів, перевірити як працює режим Collaboration.</p>
+			<p><a href="https://jsfiddle.net/#&togetherjs=DwOunIf9u7">Link</a></p>
+		</section>
+
+		<section>
+			<h2>5.2. CSS: display.</h2>
+			<p>Стиль display може змінити відображення блоку.</p>
+			<p>Як ми вже знаємо, теги діляться на блочні і строкові (а також табличні, які розглянемо пізніше).</p>
+			<p>Будь-який блочний елемент можна перетворити на строковий, а будь-який строковий - на блочний за допомогою властивості display.</p>
+			<code>
+				&lt;span style="<strong>display: block;</strong>"&gt; - будь-який елемент перетворює на блочний, він набуває всіх властивостей блочних елементів, його ширина по замовчуванню стає 100%, можна застосовувати вертикальні паддінги і маргіни.<br><br>
+				&lt;p style="<strong>display: inline;</strong>"&gt; - будь-який елемент перетворює на строковий, він набуває всіх властивостей строкових елементів, його розміри по замовчуванню визначається розмірами контенту (вмісту), вертикальні паддінги і маргіни будуть ігноруватися.<br><br>
+				&lt;div style="<strong>display: inline-block;</strong>"&gt; - будь-який елемент буде поводитися як строковий, але всередині буде мов блочний - будуть працювати розміри, вертикальні паддінги, але вертикальні маргіни працювати не будуть.
+			</code>
+			<p>Властивості display: table; та display: table-cell; ми розглянемо пізніше, під час вивчення таблиць. Решта варіантів на практиці використовується дуже рідко і розглядати ми їх не будемо.</p>
+			<code>
+				&lt;h1 style="<strong>display: none;</strong>"&gt; - приховує будь-який елемент, так, ніби ви його видалили.<br><br>
+				&lt;h1 style="<strong>visibility: hidden;</strong>"&gt; - приховує будь-який елемент, але залишає виділене під нього місце.<br><br>
+				&lt;h1 style="<strong>visibility: visible;</strong>"&gt; - робить видимим прихований попереднім способом елемент (значення по-замовчуванню).
+			</code>
+		</section>
+
+		<section>
+			<h2>5.3. Властивості :hover, :active, :visited, :link.</h2>
+			<p>До елементів в стилях можна додати реакцію на події миші (без пробілів):</p>
+			<code>
+				<strong>a:hover</strong> { color: green;} - посилання, на яке навели курсор миші.<br>
+				<strong>a:active</strong> { color: red;} - посилання, на яке клацнули, але ще не відпустили кнопку миші.<br>
+				<strong>a:visited</strong> { color: silver;} - посилання, яке вже відвідали.<br>
+				<strong>a:link</strong> { color:orange;} - не відвідуване посилання (аналог простого запису a {...}).<br>
+				a.first.active:hover {...} - якщо у елемента є класи, то :hover додаємо в кінець.<br>
+				a#id_element:hover {...} - аналогічно якщо в елемента є ID.<br>
+				a#first.active:hover {...}, a.active#first:hover {...} - змішані приклади (еквівалентні між собою).<br>
+				<strong>img:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на зображення.<br>
+				<strong>h2:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на заголовок.
+			</code>
+			<p class="test"><a href="https://www.yandex.ru/search?tbm=isch&amp;q=html6">Тестове посилання</a>.</p>
+		</section>
+
+		<section>
+			<h2>5.4. Стилі браузера (user agent stylesheet).</h2>
+			<p>По замовчуванню кожен браузер мавласний набір стилів для всіх елементів.</p>
+			<p>Саме тому "голий" HTML виглядає не як текст в блокноті, а має деяке форматування: заголовки виконані більшим і жирним шрифтом, посилання виділені синім кольором, заголовки і параграфи мають відступи, списки також мають відступи та декоративні кружечки на початку кожного елемента списку.</p>
+			<div class="image">
+				<img src="images/part5_4_1.png" alt="User agent styles">
+				<p>Зображення 5.4.1. Стилі браузера.</p>
+			</div>
+			<p>Проблема в тому, що ці стилі у різних браузерах можуть різнитися.</p>
+			<p>Перед тим, як почати писати стилі бажано провести обнулення стилів браузера.</p>
+			<p>Ось приклад обнуляючих стилів, включаючи веб-форми.</p>
+			<code>
+				html { margin:0; padding:0;}<br>
+				body { margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}<br>
+				.clear { clear:both;}<br>
+				p { margin:0; padding:10px 0;}<br>
+				a { color:#0000ff; text-decoration:underline;}<br>
+				a:hover { color:#7777ff;}<br>
+				a img { border:none;}<br>
+				h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}<br>
+				h1 { padding:40px 0 24px; line-height:1.4em;}<br>
+				h2 { padding:0 0 12px;}<br>
+				strong { font-weight:bold;}<br>
+				em { font-style:italic;}<br>
+				form, menu, iframe { display:block; margin:0; padding:0; border:none;}<br>
+				ol, ul, dl, li, dt, dd { margin:0; padding:0; list-style:none;}<br>
+				<!--input[type="text"],<br>
+				input[type="email"],<br>
+				input[type="tel"],<br>
+				input[type="password"] { display:block; padding:11px 12px; height:38px; width:100%; color:#606060; font:normal 14px/16px Helvetice, Arial, sans-serif; background:#fff; border:none; border-radius:4px; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}<br>
+				input.hidden { display:none;}<br>
+				textarea { display:block; padding:11px 12px; color:#606060; resize:none; overflow:auto; font:normal 14px/20px Helvetice, Arial, sans-serif; background:#fff; border:none; border-radius:4px; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}<br>
+				input[type="submit"] { font:normal 18px/21px Helvetice, Arial, sans-serif; color:#fff; text-transform:uppercase; cursor:pointer; border:none; border-radius:0; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}<br>-->
+				* { outline:none;}
+			</code>
+
+		</section>
+
+		<section>
+			<h2>5.6. ID та вага стилів.</h2>
+
+			<p>
+				Id - ідентифікатор. Id не може повторюватися в межах однієї сторінки.<br><br>
+				div {...} - стилі для всіх тегів.<br>
+				.class_name {...} - стилі для тегів, що мають цей клас.<br>
+				#id_name {...} - стилі для тега, який має цей ідентифікатор. Використовувати не бажано.<br><br>
+				<strong>Вага стилів:</strong><br>
+				стилі браузера - 0<br>
+				* - 0.1<br>
+				тег - 1<br>
+				клас - 10<br>
+				id - 100<br>
+				інлайновий стиль (внутритеговий, індивідуальний) - 1000<br>
+				!important - 10000
+			</p>
+		</section>
+
+		<section>
+			<h2>5.6. Акуратність кода.</h2>
+			<p>Акуратний код легко читати та розбирати на окремі елементи.</p>
+			<p>Всі внутрішні елементи (діти першого порядку) по відношенню до батьківського повинні мати однаковий відступ.</p>
+			<p>Великі блоки можна відділяти в коді пустими строками для полегшення навігації по коду.</p>
+			<p>Часто для цього використовують коментарі виду:</p>
+			<code>
+				&lt;!-- Header begin --&gt;<br>
+				&lt;div class="header"&gt;<br>
+				&nbsp;&nbsp;...<br>
+				&lt;/div&gt;<br>
+				&lt;!-- Header end --&gt;
+			</code>
+			<p>Але я вважаю, що вдало названі блоки і задані класи цілком і повністю будуть описувати контент поточного блока.</p>
+			<p>Приклади хорошого і поганого оформлення кода:</p>
+			<div class="image">
+				<img src="images/part5_6_1.png" alt="HTML code">
+				<p>Зображення 5.6.1. HTML-код, акуратний та аби як зроблений.</p>
+			</div>
+			<p>В HAML-коді (як і в багатьох сучасних мовах програмування) неакуратний код просто не буде працювати: вкладення тегів один в один визначається виключно відступами:</p>
+			<div class="image">
+				<img src="images/part5_6_2.png" alt="HAML code">
+				<p>Зображення 5.6.2. HAML-код, акуратний та аби як зроблений.</p>
+			</div>
+			<p><strong>Принцип бритви Оккама</strong> - рос.: "не плоди сущее без необходимости", тобто, не треба створювати зайвих елементів, які не несуть ніякого змісту. Якщо 2 блока можна об’єднати в один - це варто зробити.</p>
+			<p>Звичайно, не треба прагнути до принципового мінімалізму, часто зменшення HTML-коду збільшує CSS-код і навпаки. Або деякі фрагменти можна зробити економно, але дуже неочевидними способами, в яких важко розібратися, які важко пристосувати до інших умов.</p>
+			<p>Валідатор - це програма, що перевіряє правильність коду. Основний - це розроблений компанією w3c.</p>
+			<p>До появи зручних IED (інтегрованих середовищ розробки), наприклад, phpStorm, кожен написаний свій код було дуже бажано закинути у валідатор. Наразі валідатори, як правило, вбудовані в сучасні IDE і перевіряють код на льоту.</p>
+			<p>Проте, я раджу перші свої проекти закидувати у <a href="https://validator.w3.org/">валідатор для HTML</a> та <a href="http://jigsaw.w3.org/css-validator/">для CSS</a> щоб ознайомитися як він працює, яку інформацію видає, що пропонує змінити.</p>
+			<p><strong>Завдання:</strong> перевірити свій HTML-код і CSS. Зробіть деякі помили, приберіть атрибути <strong>alt</strong> у зображень і повторно зробіть перевірку.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

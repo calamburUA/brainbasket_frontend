@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 8.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<div class="image">
+			<img src="images/rukojop.jpg" alt="margin-top">
+			<p>margin-top: 100px; margin: 35px 0;</p>
+		</div>
+		<p class="noheight">height: 40px;</p>
+		<div class="clear_example clr">
+			<div>float: left;</div>
+			<div>float: right;</div>
+		</div>
+
+		<code>
+			Структура робочого каталогу:<br>
+			<strong>work/</strong><br>
+			2015-11/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;plodove/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>styles.css</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image1.jpg</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image2.jpg</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.png</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>index.html</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psd/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.zip</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.psd</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.psd</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>futbolki_20151104.zip</em>
+		</code>
+
+
+		<h1>Заняття 8.</h1>
+
+		<section>
+			<h2>8.1. Таблиці HTML.</h2>
+			<p>Для виведення табличних даних в HTML існує декілька тегів:</p>
+			<code>
+				&lt;table&gt; - таблиця;<br>
+				&lt;tr&gt; - строка таблиці;<br>
+				&lt;td&gt; - чарунка таблиці;<br>
+				&lt;th&gt; - чарунка заголовка таблиці;<br>
+				&lt;thead&gt; - заголовок таблиці;<br>
+				&lt;tbody&gt; - тіло таблиці.
+			</code>
+			<code>
+				&lt;table&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<table>
+				<tr>
+					<th>Продукція</th>
+					<th>Кількість</th>
+				</tr>
+				<tr>
+					<td>Олівці</td>
+					<td>70 шт.</td>
+				</tr>
+				<tr>
+					<td>Ручки</td>
+					<td>24 шт.</td>
+				</tr>
+				<tr>
+					<td>Фломастери</td>
+					<td>35 шт.</td>
+				</tr>
+			</table>
+			<code>
+				&lt;table style="width: 100%;"&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<code>
+				&lt;td colspan="3"&gt;<br>
+				&lt;td rowspan="2"&gt;
+			</code>
+			<table style="width: 100%;" border="1px">
+				<thead>
+					<tr>
+						<th>Продукція</th>
+						<th colspan="2">Кількість</th>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<th>Вчора</th>
+						<th>Сьогодні</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2">Олівці кольорові<br>і прості</td>
+						<td>70 шт.</td>
+						<td>23 шт.</td>
+					</tr>
+					<tr>
+						<td>64 шт.</td>
+						<td>11 шт.</td>
+					</tr>
+					<tr>
+						<td>Ручки</td>
+						<td>24 шт.</td>
+						<td>20 шт.</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<code>
+				&lt;table style="width: 100%;"&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th colspan="2"&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&amp;nbsp;&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Вчора&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Сьогодні&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td rowspan="2"&gt;Олівці кольорові&lt;br&gt;і прості&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;23 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;64 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;11 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;20 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Атрибути тега &lt;table&gt;:</p>
+			<p><strong>cellspacing</strong> - задає зовнішні відступи довкола чарунок.</p>
+			<p><strong>cellpadding</strong> - задає внутрішні відступи всередині чарунок.</p>
+			<p>Зазвичай їх обнуляють. Можна зробити гарний бордер у таблиці, якщо їй задати у фон колір бордера, зовнішні відступи встановити на 1-2, чарункам задати потрібний фоновий колір.</p>
+			<p>&nbsp;</p>
+			<p>Років 7 тому всі сайти версталися таблицями.</p>
+		</section>
+
+		<section>
+			<h2>8.2. Таблиці CSS.</h2>
+			<code>
+				display: table;<br>
+				display: table-cell;
+			</code>
+		</section>
+
+		<p><a href="files/proj_tables.zip">Проект Таблиці: proj_tables.zip</a></p>
+
+	</div>
+</div>
+
+</body>
+</html>

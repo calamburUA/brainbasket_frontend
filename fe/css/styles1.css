@@ -1,0 +1,76 @@
+p {
+	border-radius: 6px;
+	margin: 0 20px 0px 20px;
+	line-height: 24px;
+	background: #ff00ca;
+	cursor: pointer;
+	padding: 4px 12px 6px 12px;
+	border: 1px solid #000;
+	font-size: 18px;
+}
+
+p.second {
+	cursor: help;
+	padding: 6px 10px 4px;
+	font-size: 19px;
+	border: 1px solid #00f;
+	line-height: 22px;
+	background: #00caff;
+	margin: 0 16px;
+	border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* глобальні стилі */
+position, display, float
+
+/* відступи, розміри */
+left, top, margin, padding, width, height
+
+/* шрифт */
+color, font-*, line-height, text-*
+
+/* фон, границі */
+background, border, box-shadow
+
+/* решта */
+opacity, overflow, cursor...
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 13.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.def, .def2 { padding: 40px 0;}
+		.def label { display: block;}
+		.def label span { display: inline-block; width: 100px; vertical-align: top;}
+		.def label input,
+		.def label textarea { width: 250px; outline: none;}
+		.special input + span { display: inline-block; padding: 0 4px;}
+		.special input:checked + span { background: #f00; color: #fff;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<div class="image">
+			<img src="images/rukojop.jpg" alt="margin-top">
+			<p>margin-top: 100px; margin: 35px 0;</p>
+		</div>
+		<p class="noheight">height: 40px;</p>
+		<p>&nbsp;</p>
+		<p class="big">font-size + line-height <img src="images/friends.gif" alt="friendship"></p>
+		<p class="big">position: absolute + position: relative <img src="images/friends.gif" alt="friendship"></p>
+		<p>&nbsp;</p>
+		<div class="clear_example clr">
+			<div>float: left;</div>
+			<div>float: right;</div>
+		</div>
+
+		<code>
+			Структура робочого каталогу:<br>
+			<strong>work/</strong><br>
+			2015-11/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;plodove/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>styles.css</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image1.jpg</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>image2.jpg</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.png</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>index.html</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psd/<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.zip</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>maket.psd</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>sprite.psd</em><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>futbolki_20151104.zip</em>
+		</code>
+
+		<p><strong>Обнулення стилів браузера:</strong></p>
+		<code>
+			html { padding:0; margin:0;}<br>
+			body { position:relative; margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}<br>
+			.clr:after { content:""; display:block; height:0; overflow:hidden; font-size:0; line-height:0; clear:both;}<br>
+			<br>
+			p { margin:0; padding:10px 0;}<br>
+			a { color:#0000ff; text-decoration:underline;}<br>
+			a:hover { color:#7777ff;}<br>
+			a img { border:none;}<br>
+			h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}<br>
+			strong { font-weight:bold;}<br>
+			em { font-style:italic;}<br>
+			form, menu, iframe { display:block; margin:0; padding:0; border:none;}<br>
+			ol, ul, dl, li, dt, dd { margin:0; padding:0; list-style:none;}<br>
+			* { outline:none;}
+		</code>
+
+		<h1>Заняття 13.</h1>
+
+		<section>
+			<h2>13.1. Верстка e-mail’ів.</h2>
+			<p>Верстка е-мейлів має певні особливості. Вона заснована на досить старих технологіях HTML2.0 та CSS першої редакції.</p>
+			<div class="image">
+				<img src="images/part13_1_1.png" alt="Internet 90th">
+				<p>Зображення 13.1.1. Інтернет 90-х.</p>
+			</div>
+
+			<p>Ще є проблемою те, що HTML-код мають інтерпритувати багато різних програм, серед яких Outlook, Outlook Express, The Bat!, Mozilla Thunderbird, Opera Mail та десякти інших.</p>
+			<p>Кожна з цих програм може відображати верстку е-мейл трохи по-своєму. Більше того, різні версії MS Outlook відображають верстку по-різному. Складається враження, що у версії 2007-го року двіжок був більш продвинутий, ніж у 2010-го, який славився великою купою глюків у відображенні.</p>
+
+			<p>По-перше, ви не можете використовувати блоки &lt;div&gt;, вся верстка була таблична.</p>
+			<p>По-друге, ви не можете використовувати стилі. Ви повинні зробити гарно все без стилів, а тоді добавити стилі для більш продвинутих програм.</p>
+			<p>По-третє - забудьте про бекграунд. Ви можете вставляти тільки картинки чи через атрибут задавати bgcolor.</p>
+
+			<p>Ширина макета у е-мейлів як правило коливається в межах 580-620 пікселів. Це пов’язане з розповсюдженням в свій час моніторів 640 і 1024 пікселя в ширину.</p>
+			<p>На екранах в 640 пікселів е-мейл займав всю ширину екрану, на екранах в 1024 пікселя - збоку ще могла розміщуватися панель з деревом каталогів поштового ящика.</p>
+			<div class="image">
+				<img src="images/part13_1_2.png" alt="The Bat!">
+				<p>Зображення 13.1.2. Програма для роботи з електронною поштою The Bat!.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>13.2. Стандартна початкова сітка е-мейлів.</h2>
+			<p>Починаємо верстати з базової сітки. !DOCTYPE можна не використовувати, за часів html2.0 цього тега ще не було.</p>
+			<table border="1">
+				<tr>
+					<td width="20" height="1"><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+					<td width="580" height="1"><img src="images/spacer.gif" alt="" width="580" height="1"></td>
+					<td width="20" height="1"><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+				</tr>
+				<tr>
+					<td><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+					<td>
+						Сюди вставляємо таблицю з контентом:
+						<table width="580">
+							...
+						</table>
+					</td>
+					<td><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+				</tr>
+				<tr>
+					<td><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+					<td><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+					<td><img src="images/spacer.gif" alt="" width="20" height="20"></td>
+				</tr>
+			</table>
+			<code>
+				&lt;table border="0" cellspacing="0" cellpadding="0" width="620"&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td width="20"&gt;&lt;img src="images/spacer.gif" alt="" width="20" height="1"&gt;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td width="580"&gt;&lt;img src="images/spacer.gif" alt="" width="580" height="1"&gt;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td width="20"&gt;&lt;img src="images/spacer.gif" alt="" width="20" height="1"&gt;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сюди вставляємо таблицю з контентом:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table width="580" border="0" cellspacing="0" cellpadding="0"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;img src="images/spacer.gif" alt="" width="20" height="20"&gt;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&lt;/table&gt;<br>
+			</code>
+			
+			<p><strong>Сітка адаптивних е-мейлів:</strong><p>
+			
+			<code>
+				&lt;center><br>
+				&nbsp;&nbsp;&lt;center style="display:inline-block; max-width:620px; padding:20px;"><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;table width="100%" border="0" cellspacing="0" cellpadding="0"><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... (бокові ячєйки не потрібні, їх заміняє паддінг в &lt;center><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table><br>
+				&nbsp;&nbsp;&lt;/center><br>
+				&lt;/center>
+			</code>
+
+
+		</section>
+
+		<p>Макети е-майлів: <a href="files/emails.zip">emails.zip</a>.</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	</div>
+</div>
+
+</body>
+</html>

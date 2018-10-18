@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 18.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+  	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Заняття 18. Cookies, localStorage.</h1>
+
+		<section>
+			<p>Cookies - це спеціальні дані, що зберігаються у браузері. Для роботи з cookies зручно використовувати <a href="js/cookies.js">набір з декількох функцій</a> чи спеціальні бібліотеки від сторонніх розробників.</p>
+			<p>Зайдіть на будь-яку веб-сторінку в інтернеті, наприклад, google, відкрийте консоль та введіть у неї: consile.log(document.cookie);</p>
+			<p>В cookies можна зберігати різноманітні дані, наприклад, інформацію про авторизацію користувача, налаштування сторінки та інше. Cookies широко використовують для рекламних цілей, відслідковуючи користувачів, їхні дії.</p>
+			<p>Технологія cookies працює лише на сервері (можна використовувати локальний сервер localhost).</p>
+			<code>
+				<strong>setCookie("username", "John Doe");</strong> - створити кукі з ключем username.<br>
+				<strong>var username = getCookie("username");</strong> - скопіювати у змінну кукі з ключем username.<br>
+				<strong>setCookie("email", "john.doe@mysite.com");</strong> - добавити ще одне кукі.<br>
+				<strong>console.log(document.cookie);</strong> - вивести всі кукі в консоль.<br>
+				<strong>deleteCookie("username");</strong> - видалити кукі з ключем username.
+			</code>
+			<p>Локальне сховище даних має подібний функціонал, але дозволяє зберігати більше даних, а також - в різних форматах, не тільки в строках.</p>
+			<p>Робота з ним простіша, ніж з cookies:</p>
+			<code>
+				var data = [5, 12, "32", 7, "html", "99"];<br>
+				localStorage.setItem("bar", data);<br>
+				var foo = localStorage.getItem("bar");<br>
+				localStorage.removeItem("bar");<br>
+				localStorage.clear();
+			</code>
+		</section>
+
+		<section>
+			<h2>Завдання.</h2>
+			<p>0. Підключіть файл <a href="js/cookies.js">cookies.js</a> у ваш проект. В цьому файлі є 3 зручних функції для роботи з Cookies.</p>
+			<p>1. Запишіть в кукі: document.cookie = "car=Mercedes"; document.cookie = "planer=Boeing". Зчитайте значення цих кукі, збережіть у змінні та виведіть в консоль. В консолі введіть document.cookie, подивіться всі кукі.</p>
+			<p>2. Створіть 2 кнопки і поле вводу. По кліку на одну буде записано cookie з текстом поля вводу, по кліку на другу - виводити alert зі строкою. Закрийте браузер, відкрийте знову, перевірте, чи зберіглося кукі, клацнувши на другу кнопку.</p>
+			<p>3. Запишіть кукі з часом дії 5 секунд, зчитайте його через 2 і через 7 секунд, виводьте в консоль.</p>
+			<p>4. При вході на сторінку перевіряйте наявність кукі зі своїм іменем. Якщо воно є - виведіть у який-небудь блок, наприклад, &lt;p&gt; вітання: "Привіт, %username% !", якщо немає - зробіть видимими поле вводу і кнопку з пропозицією ввести ім’я користувача. По кліку на кнопку записати кукі, вивести вітання і сховати елементи форми.</p>
+			<p>5. До попереднього завдання додаткова умова: термін дії кукі має бути 1 хвилина. Не забудьте поновити кукі при закритті сторінки.</p>
+			<p>6. Створіть масив довжиною 8 елементів з довільних чисел. Додайте на 4 та 7 місця строки зі своїм ім’ям та прізвищем, на 2 місце - об’єкт "Гарбуз" з трьома властивостями. Запишіть цей масив в localStorage, зчитайте його у змінну та виведіть у консоль.</p>
+			<p>7. Зробіть завдання 1..4 за допомогою localStorage.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>
+
+"csrftoken=jhZI1QCHmCMUoi3O8Q8T31FBLhR6xhId; _ga=GA1.2.238034588.1446050218; __utma=210580238.238034588.1446050218.1464801969.1465035739.11; __utmz=210580238.1464801969.10.3.utmcsr=crcl.cf|utmccn=(referral)|utmcmd=referral|utmcct=/boba/part_01_start.html; PRUM_EPISODES=s=1470675712608&r=https%3A//jsfiddle.net/; window_sizes=%7B%22w%22%3A%5Bnull%2Cnull%5D%2C%22h%22%3A%5Bnull%2Cnull%2Cnull%2Cnull%5D%7D"
